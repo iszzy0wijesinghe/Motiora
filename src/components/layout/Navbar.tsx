@@ -6,6 +6,7 @@ import {
   Info,
   Mail,
   Menu,
+  Sparkles,
   Wrench,
   X,
 } from "lucide-react";
@@ -62,9 +63,29 @@ function Navbar() {
     setOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
+
   return (
     <>
-      {/* Desktop left command rail */}
+      {/* Desktop left command rail - unchanged */}
       <aside className="fixed bottom-4 left-4 top-4 z-50 hidden w-[64px] flex-col items-center justify-between rounded-[2rem] border border-[#f6f8ef]/10 bg-[#070907]/78 px-2 py-3 shadow-[0_20px_70px_rgba(0,0,0,0.35)] backdrop-blur-2xl lg:flex">
         <Mark />
 
@@ -144,24 +165,30 @@ function Navbar() {
       </aside>
 
       {/* Mobile top bar */}
-      <header className="fixed inset-x-0 top-0 z-50 px-4 pt-3 lg:hidden">
+      <header className="fixed inset-x-0 top-0 z-[70] px-4 pt-3 lg:hidden">
         <nav
-          className={`mx-auto flex h-[54px] items-center justify-between rounded-full px-3 transition duration-300 ${
+          className={`mx-auto flex h-[56px] items-center justify-between rounded-full px-3 transition duration-300 ${
             scrolled || open
-              ? "border border-[#f6f8ef]/10 bg-[#070907]/86 shadow-[0_18px_58px_rgba(0,0,0,0.34)] backdrop-blur-2xl"
-              : "border border-[#f6f8ef]/[0.055] bg-[#070907]/44 backdrop-blur-xl"
+              ? "border border-[#f6f8ef]/12 bg-[#070907]/90 shadow-[0_18px_58px_rgba(0,0,0,0.42)] backdrop-blur-2xl"
+              : "border border-[#f6f8ef]/[0.07] bg-[#070907]/58 shadow-[0_14px_44px_rgba(0,0,0,0.24)] backdrop-blur-xl"
           }`}
         >
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             <Mark />
-            <span className="text-sm font-black tracking-[-0.04em] text-white">
-              Motiora
-            </span>
+
+            <div className="leading-none">
+              <span className="block text-sm font-black tracking-[-0.04em] text-white">
+                Motiora
+              </span>
+              <span className="mt-1 block text-[9px] font-black uppercase tracking-[0.18em] text-[#d8ff73]/70">
+                Software Studio
+              </span>
+            </div>
           </div>
 
           <button
             type="button"
-            className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/[0.035] text-white"
+            className="grid h-10 w-10 place-items-center rounded-full border border-white/12 bg-white/[0.045] text-white shadow-lg shadow-black/20 transition active:scale-95"
             onClick={() => setOpen((value) => !value)}
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={open}
@@ -169,32 +196,102 @@ function Navbar() {
             {open ? <X size={19} /> : <Menu size={19} />}
           </button>
         </nav>
+      </header>
 
-        <AnimatePresence>
-          {open && (
+      {/* Mobile full screen menu */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className="fixed inset-0 z-[60] overflow-y-auto bg-[#070907]/96 px-4 pb-6 pt-[86px] backdrop-blur-2xl lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
             <motion.div
-              initial={{ opacity: 0, y: -8, scale: 0.98 }}
+              className="pointer-events-none absolute left-[-22%] top-[6%] h-72 w-72 rounded-full bg-[#d8ff73]/10 blur-3xl"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+            />
+
+            <motion.div
+              className="pointer-events-none absolute bottom-[-16%] right-[-20%] h-80 w-80 rounded-full bg-[#f6c85f]/10 blur-3xl"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+            />
+
+            <motion.div
+              className="relative mx-auto flex min-h-[calc(100vh-110px)] max-w-lg flex-col"
+              initial={{ opacity: 0, y: 18, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -8, scale: 0.98 }}
-              transition={{ duration: 0.18, ease: "easeOut" }}
-              className="mx-auto mt-2 rounded-[1.4rem] border border-white/10 bg-[#070907]/96 p-2 shadow-2xl shadow-black/45 backdrop-blur-2xl"
+              exit={{ opacity: 0, y: 12, scale: 0.98 }}
+              transition={{ duration: 0.24, ease: "easeOut" }}
             >
-              <div className="grid gap-1.5">
+              <div className="rounded-[2rem] border border-white/10 bg-white/[0.035] p-4 shadow-2xl shadow-black/35">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <div className="inline-flex items-center gap-2 rounded-full border border-[#d8ff73]/18 bg-[#d8ff73]/8 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.18em] text-[#d8ff73]">
+                      <Sparkles size={12} />
+                      Navigation
+                    </div>
+
+                    <h2 className="mt-4 max-w-[260px] text-[34px] font-black leading-[0.96] tracking-[-0.06em] text-white">
+                      Move through Motiora.
+                    </h2>
+
+                    <p className="mt-3 max-w-sm text-sm leading-6 text-[#9aa69a]">
+                      Explore projects, tools, studio direction, and contact options.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <nav aria-label="Mobile navigation" className="mt-4 grid gap-2">
                 <Link
                   to="/"
-                  className={`flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-black ${
+                  className={`group flex items-center justify-between rounded-[1.35rem] border px-4 py-4 transition active:scale-[0.99] ${
                     location.pathname === "/"
-                      ? "bg-[#d8ff73] text-[#11160b]"
-                      : "bg-white/[0.035] text-slate-300"
+                      ? "border-[#d8ff73]/70 bg-[#d8ff73] text-[#11160b]"
+                      : "border-white/10 bg-white/[0.04] text-white"
                   }`}
                 >
                   <span className="flex items-center gap-3">
-                    <Home size={17} />
-                    Home
+                    <span
+                      className={`grid h-10 w-10 place-items-center rounded-full ${
+                        location.pathname === "/"
+                          ? "bg-[#11160b]/10"
+                          : "bg-white/[0.055] text-[#d8ff73]"
+                      }`}
+                    >
+                      <Home size={18} />
+                    </span>
+
+                    <span>
+                      <span className="block text-base font-black">Home</span>
+                      <span
+                        className={`mt-0.5 block text-[11px] font-bold ${
+                          location.pathname === "/"
+                            ? "text-[#11160b]/60"
+                            : "text-[#9aa69a]"
+                        }`}
+                      >
+                        Studio landing page
+                      </span>
+                    </span>
                   </span>
-                  <span className="text-[10px] uppercase tracking-[0.16em] opacity-60">
-                    Open
-                  </span>
+
+                  <ArrowUpRight
+                    size={17}
+                    className={
+                      location.pathname === "/"
+                        ? "text-[#11160b]/70"
+                        : "text-[#d8ff73]"
+                    }
+                  />
                 </Link>
 
                 {items.map((item) => {
@@ -205,35 +302,63 @@ function Navbar() {
                     <Link
                       key={item.href}
                       to={item.href}
-                      className={`flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-black ${
+                      className={`group flex items-center justify-between rounded-[1.35rem] border px-4 py-4 transition active:scale-[0.99] ${
                         active
-                          ? "bg-[#d8ff73] text-[#11160b]"
-                          : "bg-white/[0.035] text-slate-300"
+                          ? "border-[#d8ff73]/70 bg-[#d8ff73] text-[#11160b]"
+                          : "border-white/10 bg-white/[0.04] text-white"
                       }`}
                     >
                       <span className="flex items-center gap-3">
-                        <Icon size={17} />
-                        {item.label}
+                        <span
+                          className={`grid h-10 w-10 place-items-center rounded-full ${
+                            active
+                              ? "bg-[#11160b]/10"
+                              : "bg-white/[0.055] text-[#d8ff73]"
+                          }`}
+                        >
+                          <Icon size={18} />
+                        </span>
+
+                        <span>
+                          <span className="block text-base font-black">
+                            {item.label}
+                          </span>
+                          <span
+                            className={`mt-0.5 block text-[11px] font-bold ${
+                              active ? "text-[#11160b]/60" : "text-[#9aa69a]"
+                            }`}
+                          >
+                            Open {item.label.toLowerCase()}
+                          </span>
+                        </span>
                       </span>
-                      <span className="text-[10px] uppercase tracking-[0.16em] opacity-60">
-                        Open
-                      </span>
+
+                      <ArrowUpRight
+                        size={17}
+                        className={active ? "text-[#11160b]/70" : "text-[#d8ff73]"}
+                      />
                     </Link>
                   );
                 })}
+              </nav>
 
+              <div className="mt-auto pt-5">
                 <Link
                   to="/contact"
-                  className="forge-primary mt-1 flex items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-black"
+                  className="forge-primary flex items-center justify-center gap-2 rounded-[1.35rem] px-5 py-4 text-sm font-black"
                 >
                   Start project
-                  <ArrowUpRight size={16} />
+                  <ArrowUpRight size={17} />
                 </Link>
+
+                <p className="mx-auto mt-4 max-w-xs text-center text-[11px] font-bold leading-5 text-[#8d9a87]">
+                  Premium software, lightweight tools, and launch-ready digital products.
+                </p>
               </div>
             </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
@@ -18,6 +18,29 @@ const orbitStars = [
   { x: "91%", y: "58%", delay: 0.56, size: 2, moveX: -78, moveY: -48 },
 ];
 
+function useDesktopPortal() {
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const media = window.matchMedia("(min-width: 1024px) and (pointer: fine)");
+
+    const update = () => {
+      setEnabled(media.matches);
+    };
+
+    update();
+    media.addEventListener("change", update);
+
+    return () => {
+      media.removeEventListener("change", update);
+    };
+  }, []);
+
+  return enabled;
+}
+
 function GalaxyPortal() {
   return (
     <motion.div
@@ -26,7 +49,6 @@ function GalaxyPortal() {
       animate={{ opacity: 0 }}
       transition={{ duration: 1.28, ease: "easeOut" }}
     >
-      {/* soft background glow */}
       <motion.div
         className="absolute left-1/2 top-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#d8ff73]/[0.055] blur-2xl"
         initial={{ scale: 0.28, opacity: 0.2 }}
@@ -34,7 +56,6 @@ function GalaxyPortal() {
         transition={{ duration: 1.22, ease: "easeOut" }}
       />
 
-      {/* main orbit ring */}
       <motion.div
         className="absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d8ff73]/24 shadow-[0_0_42px_rgba(216,255,115,0.08)]"
         initial={{ scale: 0.2, rotate: -44, opacity: 0 }}
@@ -42,7 +63,6 @@ function GalaxyPortal() {
         transition={{ duration: 1.18, ease: "easeOut" }}
       />
 
-      {/* amber orbit ring */}
       <motion.div
         className="absolute left-1/2 top-1/2 h-[390px] w-[390px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#f6c85f]/22 shadow-[0_0_34px_rgba(246,200,95,0.08)]"
         initial={{ scale: 0.16, rotate: 38, opacity: 0 }}
@@ -50,7 +70,6 @@ function GalaxyPortal() {
         transition={{ duration: 1.25, ease: "easeOut" }}
       />
 
-      {/* tilted orbit line */}
       <motion.div
         className="absolute left-1/2 top-1/2 h-[250px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-[999px] border border-[#d8ff73]/18"
         initial={{ scale: 0.18, rotate: -22, opacity: 0 }}
@@ -58,7 +77,6 @@ function GalaxyPortal() {
         transition={{ duration: 1.15, ease: "easeOut", delay: 0.04 }}
       />
 
-      {/* opposite tilted orbit line */}
       <motion.div
         className="absolute left-1/2 top-1/2 h-[210px] w-[680px] -translate-x-1/2 -translate-y-1/2 rounded-[999px] border border-[#f6c85f]/14"
         initial={{ scale: 0.16, rotate: 28, opacity: 0 }}
@@ -66,7 +84,6 @@ function GalaxyPortal() {
         transition={{ duration: 1.18, ease: "easeOut", delay: 0.08 }}
       />
 
-      {/* bright route line crossing the portal */}
       <motion.div
         className="absolute left-1/2 top-1/2 h-px w-[72vw] max-w-[980px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-transparent via-[#d8ff73]/70 to-transparent shadow-[0_0_18px_rgba(216,255,115,0.42)]"
         initial={{ scaleX: 0, opacity: 0, rotate: -18 }}
@@ -74,7 +91,6 @@ function GalaxyPortal() {
         transition={{ duration: 1.02, ease: "easeOut", delay: 0.08 }}
       />
 
-      {/* inner flash core */}
       <motion.div
         className="absolute left-1/2 top-1/2 h-[130px] w-[130px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d8ff73]/35 bg-[#d8ff73]/10 shadow-[0_0_58px_rgba(216,255,115,0.22)]"
         initial={{ scale: 0.1, opacity: 0 }}
@@ -82,7 +98,6 @@ function GalaxyPortal() {
         transition={{ duration: 0.9, ease: "easeOut", delay: 0.02 }}
       />
 
-      {/* orbit dots */}
       <motion.span
         className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#d8ff73] shadow-[0_0_20px_rgba(216,255,115,0.9)]"
         initial={{ opacity: 0, x: -260, y: -45, scale: 0.4 }}
@@ -107,7 +122,6 @@ function GalaxyPortal() {
         transition={{ duration: 1.08, ease: "easeOut", delay: 0.16 }}
       />
 
-      {/* star burst */}
       {orbitStars.map((star, index) => (
         <motion.span
           key={`${star.x}-${star.y}-${index}`}
@@ -160,15 +174,65 @@ function ScrollToTopOnRouteChange() {
 function SiteLayout() {
   const location = useLocation();
   const reduceMotion = useReducedMotion();
+  const desktopPortal = useDesktopPortal();
+
+  const showPortal = desktopPortal && !reduceMotion;
+
+  const pageInitial = reduceMotion
+    ? { opacity: 0 }
+    : desktopPortal
+      ? {
+          opacity: 0,
+          y: 24,
+          scale: 0.978,
+          rotateX: 6,
+          rotateY: -3,
+        }
+      : {
+          opacity: 0,
+          y: 10,
+        };
+
+  const pageAnimate = reduceMotion
+    ? { opacity: 1 }
+    : desktopPortal
+      ? {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          rotateX: 0,
+          rotateY: 0,
+        }
+      : {
+          opacity: 1,
+          y: 0,
+        };
+
+  const pageExit = reduceMotion
+    ? { opacity: 0 }
+    : desktopPortal
+      ? {
+          opacity: 0,
+          y: -14,
+          scale: 0.99,
+          rotateX: -4,
+          rotateY: 3,
+        }
+      : {
+          opacity: 0,
+          y: -8,
+        };
 
   return (
-    <div className="forge-shell min-h-screen bg-[#070907] text-[#f6f8ef]">
+    <div className="forge-shell relative min-h-screen bg-[#070907] text-[#f6f8ef]">
+      {/* Always visible. Do not wrap this with reduceMotion. CSS controls its own reduced-motion behavior. */}
       <SpaceBackdrop />
+
       <Navbar />
       <ScrollToTopOnRouteChange />
 
       <AnimatePresence mode="wait">
-        {!reduceMotion && <GalaxyPortal key={`portal-${location.pathname}`} />}
+        {showPortal && <GalaxyPortal key={`portal-${location.pathname}`} />}
       </AnimatePresence>
 
       <AnimatePresence mode="wait">
@@ -176,43 +240,16 @@ function SiteLayout() {
           key={location.pathname}
           id="main-content"
           className="relative z-10 min-h-screen overflow-hidden lg:pl-[86px]"
-          initial={
-            reduceMotion
-              ? { opacity: 0 }
-              : {
-                  opacity: 0,
-                  y: 24,
-                  scale: 0.978,
-                  rotateX: 6,
-                  rotateY: -3,
-                }
-          }
-          animate={
-            reduceMotion
-              ? { opacity: 1 }
-              : {
-                  opacity: 1,
-                  y: 0,
-                  scale: 1,
-                  rotateX: 0,
-                  rotateY: 0,
-                }
-          }
-          exit={
-            reduceMotion
-              ? { opacity: 0 }
-              : {
-                  opacity: 0,
-                  y: -14,
-                  scale: 0.99,
-                  rotateX: -4,
-                  rotateY: 3,
-                }
-          }
-          transition={{ duration: 0.46, ease: "easeOut" }}
+          initial={pageInitial}
+          animate={pageAnimate}
+          exit={pageExit}
+          transition={{
+            duration: desktopPortal ? 0.46 : 0.26,
+            ease: "easeOut",
+          }}
           style={{
             transformOrigin: "center top",
-            transformStyle: "preserve-3d",
+            transformStyle: desktopPortal ? "preserve-3d" : "flat",
           }}
         >
           <Outlet />
