@@ -1,0 +1,357 @@
+@import "tailwindcss";
+
+:root {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: #f6f8ef;
+  background: #070907;
+
+  --forge-bg: #070907;
+  --forge-deep: #0b0f0b;
+  --forge-panel: rgba(246, 248, 239, 0.035);
+  --forge-line: rgba(246, 248, 239, 0.08);
+  --forge-lime: #d8ff73;
+  --forge-green: #8aff80;
+  --forge-amber: #f6c85f;
+  --forge-steel: #9aa69a;
+  --forge-text: #f6f8ef;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #070907;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: #f6f8ef;
+  background:
+    radial-gradient(
+      circle at 16% 10%,
+      rgba(216, 255, 115, 0.11),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 88% 14%,
+      rgba(246, 200, 95, 0.09),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 50% 110%,
+      rgba(138, 255, 128, 0.09),
+      transparent 34%
+    ),
+    linear-gradient(135deg, #070907 0%, #0c120d 45%, #050705 100%);
+  overflow-x: hidden;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(216, 255, 115, 0.28);
+}
+
+:focus-visible {
+  outline: 2px solid rgba(216, 255, 115, 0.92);
+  outline-offset: 4px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.forge-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.forge-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(246, 248, 239, 0.012) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(246, 248, 239, 0.012) 1px, transparent 1px);
+  background-size: 90px 90px;
+  mask-image: radial-gradient(circle at 50% 18%, black, transparent 72%);
+}
+
+.forge-shell::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.45;
+  background:
+    radial-gradient(
+      circle at 50% 22%,
+      rgba(216, 255, 115, 0.07),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 80% 42%,
+      rgba(246, 200, 95, 0.055),
+      transparent 35%
+    );
+}
+
+.forge-gradient {
+  background: linear-gradient(90deg, #ffffff 0%, #d8ff73 48%, #f6c85f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Keep this unchanged */
+.forge-word {
+  color: transparent;
+  -webkit-text-stroke: 1.15px rgba(246, 248, 239, 0.075);
+  text-shadow: 0 0 18px rgba(216, 255, 115, 0.035);
+}
+
+/* SVG watermark system */
+.motiora-svg-watermark {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.08em;
+  text-transform: uppercase;
+}
+
+
+
+
+.motiora-svg-base-word {
+  fill: transparent;
+  stroke: rgba(246, 248, 239, 0.06);
+  stroke-width: 1.15;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.motiora-svg-route-word {
+  fill: transparent;
+  stroke: rgba(216, 255, 115, 0.72);
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+
+  stroke-dasharray: 20 680;
+  stroke-dashoffset: 680;
+
+  filter:
+    drop-shadow(0 0 5px rgba(216, 255, 115, 0.42))
+    drop-shadow(0 0 12px rgba(246, 200, 95, 0.16));
+
+  opacity: 0;
+  animation: motiora-clipped-route 42s linear infinite;
+}
+
+@keyframes motiora-clipped-route {
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 680;
+  }
+
+  1.5% {
+    opacity: 0.64;
+  }
+
+  6.5% {
+    opacity: 0.8;
+    stroke-dashoffset: 180;
+  }
+
+  9.5% {
+    opacity: 0.48;
+    stroke-dashoffset: -90;
+  }
+
+  11%,
+  100% {
+    opacity: 0;
+    stroke-dashoffset: -180;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motiora-svg-route-word {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+@keyframes motiora-letter-stroke-route {
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 720;
+  }
+
+  2% {
+    opacity: 0.55;
+  }
+
+  8% {
+    opacity: 0.78;
+    stroke-dashoffset: 240;
+  }
+
+  14% {
+    opacity: 0.5;
+    stroke-dashoffset: -90;
+  }
+
+  18%,
+  100% {
+    opacity: 0;
+    stroke-dashoffset: -180;
+  }
+}
+
+
+
+
+
+.forge-line {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(216, 255, 115, 0.2),
+    rgba(246, 200, 95, 0.14),
+    transparent
+  );
+}
+
+.forge-panel {
+  border: 1px solid rgba(246, 248, 239, 0.075);
+  background: linear-gradient(
+    145deg,
+    rgba(246, 248, 239, 0.038),
+    rgba(246, 248, 239, 0.012)
+  );
+}
+
+.forge-panel-soft {
+  border: 1px solid rgba(246, 248, 239, 0.06);
+  background: rgba(246, 248, 239, 0.022);
+}
+
+.forge-primary {
+  background: linear-gradient(135deg, #d8ff73 0%, #8aff80 52%, #f6c85f 100%);
+  color: #11160b;
+  box-shadow:
+    0 18px 42px rgba(216, 255, 115, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.forge-primary:hover {
+  box-shadow:
+    0 24px 62px rgba(216, 255, 115, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.36);
+}
+
+.forge-ghost {
+  border: 1px solid rgba(246, 248, 239, 0.09);
+  background: rgba(246, 248, 239, 0.026);
+}
+
+.forge-ghost:hover {
+  border-color: rgba(216, 255, 115, 0.28);
+  background: rgba(216, 255, 115, 0.06);
+}
+
+.forge-perspective {
+  perspective: 1100px;
+  transform-style: preserve-3d;
+}
+
+.forge-plane {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.forge-scan {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(216, 255, 115, 0.25),
+    transparent
+  );
+}
+
+.forge-galaxy-ring {
+  border: 1px solid rgba(216, 255, 115, 0.14);
+  box-shadow:
+    0 0 34px rgba(216, 255, 115, 0.06),
+    inset 0 0 34px rgba(216, 255, 115, 0.035);
+}
+
+.forge-depth-shadow {
+  box-shadow:
+    0 22px 70px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(246, 248, 239, 0.035);
+}
+
+@media (max-width: 767px) {
+  .forge-perspective {
+    perspective: none;
+  }
+
+  .forge-plane {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motiora-svg-route {
+    animation: none;
+    opacity: 0;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
