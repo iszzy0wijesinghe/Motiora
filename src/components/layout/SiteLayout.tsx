@@ -50,21 +50,22 @@ function GalaxyPortal() {
       transition={{ duration: 1.28, ease: "easeOut" }}
     >
       <motion.div
-        className="absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#d8ff73]/[0.12] blur-2xl sm:h-[620px] sm:w-[620px]"
+        className="absolute left-1/2 top-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#d8ff73]/[0.12] blur-2xl"
         initial={{ scale: 0.28, opacity: 0.2 }}
         animate={{ scale: 1.55, opacity: [0.18, 0.42, 0] }}
         transition={{ duration: 1.22, ease: "easeOut" }}
       />
 
       <motion.div
-        className="absolute left-1/2 top-1/2 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d8ff73]/45 shadow-[0_0_70px_rgba(216,255,115,0.18)] sm:h-[560px] sm:w-[560px]"
+        className="absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d8ff73]/45 shadow-[0_0_70px_rgba(216,255,115,0.18)]"
         initial={{ scale: 0.2, rotate: -44, opacity: 0 }}
         animate={{ scale: 1.42, rotate: 70, opacity: [0, 0.86, 0] }}
         transition={{ duration: 1.18, ease: "easeOut" }}
       />
 
       <motion.div
-       className="absolute left-1/2 top-1/2 h-[250px] w-[250px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#f6c85f]/38 shadow-[0_0_62px_rgba(246,200,95,0.16)] sm:h-[390px] sm:w-[390px]"
+        className="absolute left-1/2 top-1/2 h-[390px] w-[390px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#f6c85f]/38 shadow-[0_0_62px_rgba(246,200,95,0.16)]"
+        initial={{ scale: 0.16, rotate: 38, opacity: 0 }}
         animate={{ scale: 1.64, rotate: -62, opacity: [0, 0.76, 0] }}
         transition={{ duration: 1.25, ease: "easeOut" }}
       />
@@ -175,7 +176,8 @@ function SiteLayout() {
   const reduceMotion = useReducedMotion();
   const desktopPortal = useDesktopPortal();
 
-  const showPortal = !reduceMotion;
+  // Galaxy portal is desktop only. Mobile uses clean fade + slide + blur.
+  const showPortal = desktopPortal && !reduceMotion;
 
   const pageInitial = reduceMotion
     ? { opacity: 0 }
@@ -189,8 +191,8 @@ function SiteLayout() {
         }
       : {
           opacity: 0,
-          y: 26,
-          scale: 0.975,
+          y: 16,
+          filter: "blur(5px)",
         };
 
   const pageAnimate = reduceMotion
@@ -206,6 +208,7 @@ function SiteLayout() {
       : {
           opacity: 1,
           y: 0,
+          filter: "blur(0px)",
         };
 
   const pageExit = reduceMotion
@@ -220,12 +223,12 @@ function SiteLayout() {
         }
       : {
           opacity: 0,
-          y: -8,
+          y: -10,
+          filter: "blur(4px)",
         };
 
   return (
     <div className="forge-shell relative min-h-screen bg-[#070907] text-[#f6f8ef]">
-      {/* Always visible. Do not wrap this with reduceMotion. CSS controls its own reduced-motion behavior. */}
       <SpaceBackdrop />
 
       <Navbar />
@@ -244,7 +247,7 @@ function SiteLayout() {
           animate={pageAnimate}
           exit={pageExit}
           transition={{
-            duration: desktopPortal ? 0.56 : 0.38,
+            duration: desktopPortal ? 0.56 : 0.3,
             ease: "easeOut",
           }}
           style={{
