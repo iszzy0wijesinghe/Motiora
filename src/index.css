@@ -353,3 +353,817 @@ a {
     transition-duration: 0.01ms !important;
   }
 }
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  background: #070907;
+}
+
+#root {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* =========================
+   Motiora lightweight random space backdrop
+   ========================= */
+
+.motiora-space-backdrop {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 16%, rgba(216, 255, 115, 0.045), transparent 24%),
+    radial-gradient(circle at 82% 10%, rgba(246, 200, 95, 0.035), transparent 26%),
+    radial-gradient(circle at 76% 84%, rgba(138, 255, 128, 0.03), transparent 28%);
+}
+
+.motiora-space-backdrop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 9, 7, 0.08);
+}
+
+/* Random stars, no grid background */
+.motiora-random-star {
+  position: absolute;
+  border-radius: 999px;
+  background: rgba(246, 248, 239, 0.92);
+  transform: translate3d(0, 0, 0);
+  animation-name: motioraStarPulse;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.motiora-random-star-white {
+  box-shadow: 0 0 8px rgba(246, 248, 239, 0.45);
+}
+
+.motiora-random-star-lime {
+  background: rgba(216, 255, 115, 0.95);
+  box-shadow: 0 0 9px rgba(216, 255, 115, 0.48);
+}
+
+.motiora-random-star-amber {
+  background: rgba(246, 200, 95, 0.92);
+  box-shadow: 0 0 8px rgba(246, 200, 95, 0.38);
+}
+
+/* Tail stars, top-to-bottom angle */
+.motiora-tail-star {
+  position: absolute;
+  height: 1.2px;
+  width: 94px;
+  border-radius: 999px;
+  opacity: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(246, 248, 239, 0.12),
+    rgba(216, 255, 115, 0.78),
+    rgba(246, 200, 95, 0.44),
+    transparent
+  );
+  transform: rotate(28deg);
+  will-change: transform, opacity;
+}
+
+.motiora-tail-star::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  top: -1.7px;
+  height: 3.4px;
+  width: 3.4px;
+  border-radius: 999px;
+  background: rgba(246, 248, 239, 0.92);
+  box-shadow: 0 0 10px rgba(216, 255, 115, 0.45);
+}
+
+.motiora-tail-star-1 {
+  left: -16vw;
+  top: -8vh;
+  animation: motioraTailStarDown 15s linear infinite 2s;
+}
+
+.motiora-tail-star-2 {
+  left: 34vw;
+  top: -14vh;
+  width: 74px;
+  animation: motioraTailStarDown 21s linear infinite 9s;
+}
+
+.motiora-tail-star-3 {
+  left: 78vw;
+  top: -18vh;
+  width: 82px;
+  animation: motioraTailStarDown 26s linear infinite 17s;
+}
+
+/* Small planet fragments */
+.motiora-space-chip {
+  position: absolute;
+  border-radius: 999px;
+  opacity: 0.2;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(246, 248, 239, 0.62), transparent 18%),
+    linear-gradient(135deg, rgba(216, 255, 115, 0.28), rgba(246, 200, 95, 0.12));
+  border: 1px solid rgba(246, 248, 239, 0.09);
+  transform: translate3d(0, 0, 0);
+  animation: motioraChipFloat 24s ease-in-out infinite;
+}
+
+.motiora-space-chip-1 {
+  left: 9%;
+  top: 58%;
+  height: 12px;
+  width: 12px;
+}
+
+.motiora-space-chip-2 {
+  left: 84%;
+  top: 33%;
+  height: 9px;
+  width: 9px;
+  animation-delay: 5s;
+}
+
+.motiora-space-chip-3 {
+  left: 69%;
+  top: 78%;
+  height: 15px;
+  width: 15px;
+  opacity: 0.16;
+  animation-delay: 11s;
+}
+
+/* Tiny ring fragments */
+.motiora-mini-orbit {
+  position: absolute;
+  width: 30px;
+  height: 13px;
+  border-radius: 999px;
+  border: 1px solid rgba(216, 255, 115, 0.16);
+  opacity: 0.22;
+  transform: rotate(-18deg);
+  animation: motioraMiniOrbitFloat 30s ease-in-out infinite;
+}
+
+.motiora-mini-orbit-1 {
+  left: 17%;
+  top: 42%;
+}
+
+.motiora-mini-orbit-2 {
+  right: 13%;
+  top: 66%;
+  width: 25px;
+  height: 11px;
+  border-color: rgba(246, 200, 95, 0.15);
+  animation-delay: 9s;
+}
+
+/* One tiny rocket only */
+.motiora-micro-rocket {
+  position: absolute;
+  display: block;
+  height: 5px;
+  width: 14px;
+  opacity: 0;
+  transform: rotate(-16deg) scale(0.68);
+  will-change: transform, opacity;
+}
+
+.motiora-micro-rocket span {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(246, 248, 239, 0.9),
+    rgba(216, 255, 115, 0.78),
+    rgba(246, 200, 95, 0.72)
+  );
+}
+
+.motiora-micro-rocket::before {
+  content: "";
+  position: absolute;
+  right: 12px;
+  top: 1.8px;
+  height: 1.5px;
+  width: 24px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(216, 255, 115, 0.3));
+}
+
+.motiora-micro-rocket-1 {
+  left: -16vw;
+  top: 72%;
+  animation: motioraRocketSoft 46s linear infinite 12s;
+}
+
+/* Lightweight animations */
+@keyframes motioraStarPulse {
+  0%,
+  100% {
+    transform: scale(0.92);
+    opacity: 0.38;
+  }
+
+  48% {
+    transform: scale(1.22);
+    opacity: 0.92;
+  }
+
+  72% {
+    transform: scale(1);
+    opacity: 0.52;
+  }
+}
+
+@keyframes motioraTailStarDown {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(28deg);
+  }
+
+  8% {
+    opacity: 0.72;
+  }
+
+  22% {
+    opacity: 0;
+    transform: translate3d(38vw, 112vh, 0) rotate(28deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(38vw, 112vh, 0) rotate(28deg);
+  }
+}
+
+@keyframes motioraChipFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  50% {
+    transform: translate3d(7px, -10px, 0) rotate(12deg);
+  }
+}
+
+@keyframes motioraMiniOrbitFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-18deg);
+  }
+
+  50% {
+    transform: translate3d(-8px, 8px, 0) rotate(-10deg);
+  }
+}
+
+@keyframes motioraRocketSoft {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(-16deg) scale(0.68);
+  }
+
+  8% {
+    opacity: 0.42;
+  }
+
+  24% {
+    opacity: 0;
+    transform: translate3d(124vw, -28vh, 0) rotate(-16deg) scale(0.68);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(124vw, -28vh, 0) rotate(-16deg) scale(0.68);
+  }
+}
+
+/* Mobile: fewer animated objects */
+@media (max-width: 768px) {
+  .motiora-space-backdrop {
+    opacity: 0.82;
+  }
+
+  .motiora-random-star {
+    animation-duration: 9s !important;
+  }
+
+  .motiora-tail-star-2,
+  .motiora-tail-star-3,
+  .motiora-space-chip-3,
+  .motiora-mini-orbit-2,
+  .motiora-micro-rocket {
+    display: none;
+  }
+
+  .motiora-tail-star {
+    width: 68px;
+  }
+
+  .motiora-space-chip {
+    opacity: 0.15;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motiora-random-star,
+  .motiora-tail-star,
+  .motiora-space-chip,
+  .motiora-mini-orbit,
+  .motiora-micro-rocket {
+    animation: none !important;
+  }
+
+  .motiora-tail-star,
+  .motiora-micro-rocket {
+    display: none;
+  }
+}
+
+
+
+.motiora-star-field-a {
+  background-image:
+    radial-gradient(circle, rgba(246, 248, 239, 0.38) 0 0.9px, transparent 1.3px),
+    radial-gradient(circle, rgba(216, 255, 115, 0.28) 0 0.8px, transparent 1.15px);
+  background-size: 118px 118px, 178px 178px;
+  background-position: 0 0, 46px 62px;
+  animation: motioraStarDriftA 120s linear infinite;
+}
+
+.motiora-star-field-b {
+  opacity: 0.12;
+  background-image:
+    radial-gradient(circle, rgba(246, 200, 95, 0.28) 0 0.8px, transparent 1.15px),
+    radial-gradient(circle, rgba(246, 248, 239, 0.28) 0 0.7px, transparent 1.1px);
+  background-size: 88px 88px, 220px 220px;
+  background-position: 30px 20px, 90px 130px;
+  animation: motioraStarDriftB 170s linear infinite;
+}
+
+
+
+.motiora-soft-star-1 {
+  left: 12%;
+  top: 24%;
+  animation-delay: 0s;
+}
+
+.motiora-soft-star-2 {
+  left: 34%;
+  top: 14%;
+  animation-delay: 1.1s;
+}
+
+.motiora-soft-star-3 {
+  left: 72%;
+  top: 21%;
+  animation-delay: 2.4s;
+}
+
+.motiora-soft-star-4 {
+  left: 88%;
+  top: 48%;
+  animation-delay: 0.7s;
+}
+
+.motiora-soft-star-5 {
+  left: 26%;
+  top: 78%;
+  animation-delay: 3.1s;
+}
+
+.motiora-soft-star-6 {
+  left: 62%;
+  top: 86%;
+  animation-delay: 4s;
+}
+
+
+
+.motiora-tail-star::after {
+  content: "";
+  position: absolute;
+  right: 18px;
+  top: -1.5px;
+  height: 3px;
+  width: 3px;
+  border-radius: 999px;
+  background: rgba(216, 255, 115, 0.82);
+  box-shadow: 0 0 10px rgba(216, 255, 115, 0.45);
+}
+
+.motiora-tail-star-1 {
+  left: -18vw;
+  top: -6vh;
+  animation: motioraTailStarDown 11s linear infinite 1s;
+}
+
+.motiora-tail-star-2 {
+  left: 16vw;
+  top: -14vh;
+  width: 74px;
+  animation: motioraTailStarDown 15s linear infinite 5s;
+}
+
+.motiora-tail-star-3 {
+  left: 48vw;
+  top: -10vh;
+  width: 88px;
+  animation: motioraTailStarDown 18s linear infinite 9s;
+}
+
+.motiora-tail-star-4 {
+  left: 76vw;
+  top: -18vh;
+  width: 64px;
+  animation: motioraTailStarDown 22s linear infinite 14s;
+}
+
+/* Small planet pieces / asteroids, not big planets */
+.motiora-space-chip {
+  position: absolute;
+  border-radius: 999px;
+  opacity: 0.22;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(246, 248, 239, 0.55), transparent 18%),
+    linear-gradient(135deg, rgba(216, 255, 115, 0.3), rgba(246, 200, 95, 0.1));
+  border: 1px solid rgba(246, 248, 239, 0.08);
+  transform: translate3d(0, 0, 0);
+  animation: motioraChipFloat 18s ease-in-out infinite;
+}
+
+.motiora-space-chip-1 {
+  left: 8%;
+  top: 58%;
+  height: 14px;
+  width: 14px;
+  animation-delay: 0s;
+}
+
+.motiora-space-chip-2 {
+  left: 82%;
+  top: 30%;
+  height: 10px;
+  width: 10px;
+  animation-delay: 3s;
+}
+
+.motiora-space-chip-3 {
+  left: 68%;
+  top: 72%;
+  height: 18px;
+  width: 18px;
+  opacity: 0.18;
+  animation-delay: 6s;
+}
+
+.motiora-space-chip-4 {
+  left: 20%;
+  top: 88%;
+  height: 8px;
+  width: 8px;
+  animation-delay: 9s;
+}
+
+.motiora-space-chip-5 {
+  left: 92%;
+  top: 82%;
+  height: 12px;
+  width: 12px;
+  animation-delay: 12s;
+}
+
+/* Tiny ring fragments */
+.motiora-mini-orbit {
+  position: absolute;
+  width: 32px;
+  height: 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(216, 255, 115, 0.13);
+  opacity: 0.2;
+  transform: rotate(-18deg);
+  animation: motioraMiniOrbitFloat 24s ease-in-out infinite;
+}
+
+.motiora-mini-orbit-1 {
+  left: 16%;
+  top: 42%;
+}
+
+.motiora-mini-orbit-2 {
+  right: 12%;
+  top: 64%;
+  width: 26px;
+  height: 12px;
+  border-color: rgba(246, 200, 95, 0.13);
+  animation-delay: 7s;
+}
+
+
+
+.motiora-micro-rocket span {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(246, 248, 239, 0.9), rgba(216, 255, 115, 0.72), rgba(246, 200, 95, 0.7));
+}
+
+.motiora-micro-rocket::before {
+  content: "";
+  position: absolute;
+  right: 13px;
+  top: 2px;
+  height: 2px;
+  width: 26px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(216, 255, 115, 0.32));
+}
+
+.motiora-micro-rocket-1 {
+  left: -16vw;
+  top: 70%;
+  animation: motioraRocketSoft 30s linear infinite 4s;
+}
+
+.motiora-micro-rocket-2 {
+  left: -20vw;
+  top: 38%;
+  transform: rotate(-16deg) scale(0.64);
+  animation: motioraRocketSoft 42s linear infinite 20s;
+}
+
+
+
+
+
+@keyframes motioraSoftTwinkle {
+  0%,
+  100% {
+    opacity: 0.16;
+    transform: scale(0.86);
+  }
+  45% {
+    opacity: 0.58;
+    transform: scale(1.15);
+  }
+  68% {
+    opacity: 0.24;
+    transform: scale(0.96);
+  }
+}
+
+@keyframes motioraTailStarDown {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(28deg);
+  }
+  8% {
+    opacity: 0.62;
+  }
+  24% {
+    opacity: 0;
+    transform: translate3d(42vw, 112vh, 0) rotate(28deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(42vw, 112vh, 0) rotate(28deg);
+  }
+}
+
+@keyframes motioraChipFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(10px, -14px, 0) rotate(18deg);
+  }
+}
+
+@keyframes motioraMiniOrbitFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-18deg);
+  }
+  50% {
+    transform: translate3d(-12px, 10px, 0) rotate(-10deg);
+  }
+}
+
+@keyframes motioraRocketSoft {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(-16deg) scale(0.72);
+  }
+  8% {
+    opacity: 0.44;
+  }
+  26% {
+    opacity: 0;
+    transform: translate3d(128vw, -28vh, 0) rotate(-16deg) scale(0.72);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(128vw, -28vh, 0) rotate(-16deg) scale(0.72);
+  }
+}
+
+@media (max-width: 768px) {
+  .motiora-space-backdrop {
+    opacity: 0.78;
+  }
+
+  .motiora-star-field {
+    opacity: 0.13;
+  }
+
+  .motiora-star-field-a {
+    background-size: 94px 94px, 148px 148px;
+  }
+
+  .motiora-star-field-b {
+    background-size: 76px 76px, 180px 180px;
+  }
+
+  .motiora-soft-star-4,
+  .motiora-soft-star-6,
+  .motiora-tail-star-3,
+  .motiora-tail-star-4,
+  .motiora-space-chip-4,
+  .motiora-space-chip-5,
+  .motiora-mini-orbit-2,
+  .motiora-micro-rocket-2 {
+    display: none;
+  }
+
+  .motiora-tail-star {
+    width: 64px;
+  }
+
+  .motiora-space-chip {
+    opacity: 0.15;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motiora-star-field,
+  .motiora-soft-star,
+  .motiora-tail-star,
+  .motiora-space-chip,
+  .motiora-mini-orbit,
+  .motiora-micro-rocket {
+    animation: none !important;
+  }
+
+  .motiora-tail-star,
+  .motiora-micro-rocket {
+    display: none;
+  }
+}
+
+.motiora-space-backdrop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(216, 255, 115, 0.055), transparent 22%),
+    radial-gradient(circle at 82% 12%, rgba(246, 200, 95, 0.045), transparent 24%),
+    radial-gradient(circle at 70% 78%, rgba(138, 255, 128, 0.035), transparent 24%);
+}
+
+.motiora-star-field {
+  position: absolute;
+  inset: -20%;
+  background-image:
+    radial-gradient(circle, rgba(246, 248, 239, 0.42) 0 1px, transparent 1.4px),
+    radial-gradient(circle, rgba(216, 255, 115, 0.35) 0 0.8px, transparent 1.2px);
+  background-size: 120px 120px, 180px 180px;
+  background-position: 0 0, 42px 58px;
+  opacity: 0.28;
+  will-change: transform;
+}
+
+.motiora-star-field-a {
+  animation: motioraStarDriftA 90s linear infinite;
+}
+
+.motiora-star-field-b {
+  opacity: 0.16;
+  transform: scale(1.4);
+  animation: motioraStarDriftB 130s linear infinite;
+}
+
+
+
+.motiora-long-star-1 {
+  left: -12%;
+  top: 18%;
+  animation: motioraLongStar 8.5s linear infinite;
+}
+
+.motiora-long-star-2 {
+  left: -18%;
+  top: 48%;
+  animation: motioraLongStar 11s linear infinite 3.5s;
+}
+
+.motiora-long-star-3 {
+  left: -14%;
+  top: 76%;
+  animation: motioraLongStar 13s linear infinite 6s;
+}
+
+.motiora-long-star-4 {
+  left: -20%;
+  top: 32%;
+  animation: motioraLongStar 15s linear infinite 9s;
+}
+
+
+.motiora-tiny-rocket span {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px 999px 999px 999px;
+  background: linear-gradient(90deg, #f6f8ef, #d8ff73 48%, #f6c85f);
+  box-shadow: 0 0 18px rgba(216, 255, 115, 0.38);
+}
+
+.motiora-tiny-rocket::before {
+  content: "";
+  position: absolute;
+  right: 15px;
+  top: 2px;
+  height: 3px;
+  width: 28px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(216, 255, 115, 0.45));
+}
+
+.motiora-tiny-rocket-1 {
+  left: -12%;
+  top: 62%;
+  animation: motioraRocketFly 24s linear infinite 4s;
+}
+
+.motiora-tiny-rocket-2 {
+  left: -18%;
+  top: 28%;
+  animation: motioraRocketFly 32s linear infinite 14s;
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+  .motiora-space-backdrop {
+    opacity: 0.62;
+  }
+
+  .motiora-star-field {
+    background-size: 95px 95px, 150px 150px;
+    opacity: 0.2;
+  }
+
+  .motiora-long-star {
+    width: 78px;
+  }
+
+  .motiora-long-star-3,
+  .motiora-long-star-4,
+  .motiora-tiny-rocket-2 {
+    display: none;
+  }
+
+  .motiora-tiny-rocket {
+    transform: rotate(-18deg) scale(0.72);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motiora-star-field,
+  .motiora-long-star,
+  .motiora-tiny-rocket {
+    animation: none !important;
+  }
+
+  .motiora-long-star,
+  .motiora-tiny-rocket {
+    display: none;
+  }
+}

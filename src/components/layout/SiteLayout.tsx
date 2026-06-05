@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import SpaceBackdrop from "../visuals/SpaceBackdrop";
 
 const orbitStars = [
   { x: "13%", y: "18%", delay: 0.02, size: 3, moveX: 90, moveY: -38 },
@@ -162,6 +163,7 @@ function SiteLayout() {
 
   return (
     <div className="forge-shell min-h-screen bg-[#070907] text-[#f6f8ef]">
+      <SpaceBackdrop />
       <Navbar />
       <ScrollToTopOnRouteChange />
 
@@ -173,7 +175,7 @@ function SiteLayout() {
         <motion.main
           key={location.pathname}
           id="main-content"
-          className="relative min-h-screen overflow-hidden lg:pl-[86px]"
+          className="relative z-10 min-h-screen overflow-hidden lg:pl-[86px]"
           initial={
             reduceMotion
               ? { opacity: 0 }
@@ -217,7 +219,9 @@ function SiteLayout() {
         </motion.main>
       </AnimatePresence>
 
-      <Footer />
+      <div className="relative z-20 lg:pl-[86px]">
+        <Footer />
+      </div>
     </div>
   );
 }
