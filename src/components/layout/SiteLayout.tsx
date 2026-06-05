@@ -44,28 +44,27 @@ function useDesktopPortal() {
 function GalaxyPortal() {
   return (
     <motion.div
-      className="pointer-events-none fixed inset-0 z-40 overflow-hidden bg-[#070907]/24 lg:left-[86px]"
+      className="pointer-events-none fixed inset-0 z-40 overflow-hidden bg-[#070907]/42 lg:left-[86px]"
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ duration: 1.28, ease: "easeOut" }}
     >
       <motion.div
-        className="absolute left-1/2 top-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#d8ff73]/[0.055] blur-2xl"
+        className="absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#d8ff73]/[0.12] blur-2xl sm:h-[620px] sm:w-[620px]"
         initial={{ scale: 0.28, opacity: 0.2 }}
         animate={{ scale: 1.55, opacity: [0.18, 0.42, 0] }}
         transition={{ duration: 1.22, ease: "easeOut" }}
       />
 
       <motion.div
-        className="absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d8ff73]/24 shadow-[0_0_42px_rgba(216,255,115,0.08)]"
+        className="absolute left-1/2 top-1/2 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d8ff73]/45 shadow-[0_0_70px_rgba(216,255,115,0.18)] sm:h-[560px] sm:w-[560px]"
         initial={{ scale: 0.2, rotate: -44, opacity: 0 }}
         animate={{ scale: 1.42, rotate: 70, opacity: [0, 0.86, 0] }}
         transition={{ duration: 1.18, ease: "easeOut" }}
       />
 
       <motion.div
-        className="absolute left-1/2 top-1/2 h-[390px] w-[390px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#f6c85f]/22 shadow-[0_0_34px_rgba(246,200,95,0.08)]"
-        initial={{ scale: 0.16, rotate: 38, opacity: 0 }}
+       className="absolute left-1/2 top-1/2 h-[250px] w-[250px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#f6c85f]/38 shadow-[0_0_62px_rgba(246,200,95,0.16)] sm:h-[390px] sm:w-[390px]"
         animate={{ scale: 1.64, rotate: -62, opacity: [0, 0.76, 0] }}
         transition={{ duration: 1.25, ease: "easeOut" }}
       />
@@ -176,21 +175,22 @@ function SiteLayout() {
   const reduceMotion = useReducedMotion();
   const desktopPortal = useDesktopPortal();
 
-  const showPortal = desktopPortal && !reduceMotion;
+  const showPortal = !reduceMotion;
 
   const pageInitial = reduceMotion
     ? { opacity: 0 }
     : desktopPortal
       ? {
           opacity: 0,
-          y: 24,
+          y: 26,
           scale: 0.978,
           rotateX: 6,
           rotateY: -3,
         }
       : {
           opacity: 0,
-          y: 10,
+          y: 26,
+          scale: 0.975,
         };
 
   const pageAnimate = reduceMotion
@@ -244,7 +244,7 @@ function SiteLayout() {
           animate={pageAnimate}
           exit={pageExit}
           transition={{
-            duration: desktopPortal ? 0.46 : 0.26,
+            duration: desktopPortal ? 0.56 : 0.38,
             ease: "easeOut",
           }}
           style={{
