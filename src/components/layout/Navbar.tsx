@@ -14,6 +14,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useMemo, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 import { navItems } from "../../data/site";
+import motioraLogo from "../../assets/motioralogo.webp";
 
 const navIconByHref: Record<string, LucideIcon> = {
   "/projects": FolderKanban,
@@ -24,13 +25,17 @@ const navIconByHref: Record<string, LucideIcon> = {
 
 function Mark() {
   return (
-    <Link to="/" className="group grid h-11 w-11 place-items-center rounded-full">
-      <span className="relative h-9 w-9">
-        <span className="absolute inset-0 rounded-full bg-[#d8ff73]/12 blur-md transition group-hover:bg-[#d8ff73]/20" />
-        <span className="absolute inset-[5px] rounded-full border border-[#d8ff73]/25 bg-[#0d130d]" />
-        <span className="absolute left-1/2 top-1/2 h-4 w-1 -translate-x-1/2 -translate-y-1/2 rotate-45 rounded-full bg-[#d8ff73] shadow-[0_0_18px_rgba(216,255,115,0.8)]" />
-        <span className="absolute left-1/2 top-1/2 h-4 w-1 -translate-x-1/2 -translate-y-1/2 -rotate-45 rounded-full bg-[#f6c85f] shadow-[0_0_18px_rgba(246,200,95,0.55)]" />
-      </span>
+    <Link
+      to="/"
+      className="group grid h-11 w-11 place-items-center"
+      aria-label="Go to Motiora home"
+    >
+      <img
+        src={motioraLogo}
+        alt="Motiora"
+        className="h-10 w-10 object-contain transition duration-300 group-hover:scale-105"
+        draggable={false}
+      />
     </Link>
   );
 }
@@ -89,7 +94,10 @@ function Navbar() {
       <aside className="fixed bottom-4 left-4 top-4 z-50 hidden w-[64px] flex-col items-center justify-between rounded-[2rem] border border-[#f6f8ef]/10 bg-[#070907]/78 px-2 py-3 shadow-[0_20px_70px_rgba(0,0,0,0.35)] backdrop-blur-2xl lg:flex">
         <Mark />
 
-        <nav aria-label="Main navigation" className="flex flex-col items-center gap-2">
+        <nav
+          aria-label="Main navigation"
+          className="flex flex-col items-center gap-2"
+        >
           <NavLink
             to="/"
             className="group relative grid h-11 w-11 place-items-center rounded-full transition"
@@ -244,7 +252,8 @@ function Navbar() {
                     </h2>
 
                     <p className="mt-3 max-w-sm text-sm leading-6 text-[#9aa69a]">
-                      Explore projects, tools, studio direction, and contact options.
+                      Explore projects, tools, studio direction, and contact
+                      options.
                     </p>
                   </div>
                 </div>
@@ -335,7 +344,9 @@ function Navbar() {
 
                       <ArrowUpRight
                         size={17}
-                        className={active ? "text-[#11160b]/70" : "text-[#d8ff73]"}
+                        className={
+                          active ? "text-[#11160b]/70" : "text-[#d8ff73]"
+                        }
                       />
                     </Link>
                   );
@@ -352,7 +363,8 @@ function Navbar() {
                 </Link>
 
                 <p className="mx-auto mt-4 max-w-xs text-center text-[11px] font-bold leading-5 text-[#8d9a87]">
-                  Premium software, lightweight tools, and launch-ready digital products.
+                  Premium software, lightweight tools, and launch-ready digital
+                  products.
                 </p>
               </div>
             </motion.div>

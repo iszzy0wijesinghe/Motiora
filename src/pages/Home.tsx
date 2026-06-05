@@ -25,6 +25,7 @@ import {
 } from "motion/react";
 import { Link } from "react-router";
 import { featuredProjects, featuredTools } from "../data/site";
+import motioraLogo from "../assets/motioralogo.webp";
 
 const buildFlow = [
   {
@@ -876,7 +877,23 @@ function Home() {
             transition={{ duration: 0.55, ease: "easeOut" }}
             className="max-w-2xl"
           >
-            <Label>Motiora software company</Label>
+            <div className="mb-5 hidden items-center gap-3 sm:flex">
+              <img
+                src={motioraLogo}
+                alt="Motiora"
+                className="h-12 w-12 object-contain sm:h-14 sm:w-14"
+                draggable={false}
+              />
+
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#d8ff73]">
+                  Software Studio
+                </p>
+                <p className="mt-1 text-xs font-bold tracking-[0.02em] text-[#8d9a87]">
+                  Digital systems · Web platforms · Automation tools
+                </p>
+              </div>
+            </div>
 
             <h1 className="text-balance max-w-2xl text-[33px] font-black leading-[1.05] tracking-[-0.045em] text-white sm:text-[42px] lg:text-[48px]">
               We build digital systems that{" "}
