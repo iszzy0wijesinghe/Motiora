@@ -187,17 +187,28 @@ function usePerformanceMotion() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const media = window.matchMedia("(min-width: 900px) and (pointer: fine)");
+    type NavigatorWithConnection = Navigator & {
+      connection?: {
+        saveData?: boolean;
+        addEventListener?: (type: "change", listener: () => void) => void;
+        removeEventListener?: (type: "change", listener: () => void) => void;
+      };
+    };
+
+    const connection = (navigator as NavigatorWithConnection).connection;
 
     const update = () => {
-      setCanAnimate(media.matches);
+      const saveDataEnabled = Boolean(connection?.saveData);
+
+      setCanAnimate(!saveDataEnabled);
     };
 
     update();
-    media.addEventListener("change", update);
+
+    connection?.addEventListener?.("change", update);
 
     return () => {
-      media.removeEventListener("change", update);
+      connection?.removeEventListener?.("change", update);
     };
   }, []);
 
@@ -496,7 +507,11 @@ function ScrollForge() {
                     cx: [120, 410, 700, 410, 120],
                     cy: [270, 116, 270, 424, 270],
                   }}
-                  transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+                  transition={{
+                    duration: 14,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
                 />
 
                 <motion.circle
@@ -506,7 +521,11 @@ function ScrollForge() {
                     cx: [700, 410, 120, 410, 700],
                     cy: [270, 424, 270, 116, 270],
                   }}
-                  transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
+                  transition={{
+                    duration: 16,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
                 />
               </>
             )}

@@ -160,15 +160,13 @@ a {
 
 .motiora-svg-base-word {
   fill: transparent;
-  stroke: rgba(246, 248, 239, 0.06);
-  stroke-width: 1.15;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  stroke: rgba(246, 248, 239, 0.30);
+  stroke-width: 1.15px;
 }
 
 .motiora-svg-route-word {
   fill: transparent;
-  stroke: rgba(216, 255, 115, 0.72);
+  stroke: rgba(216, 255, 115, 0.99);
   stroke-width: 1.65;
   stroke-linecap: round;
   stroke-linejoin: round;
