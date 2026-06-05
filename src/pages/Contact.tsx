@@ -13,7 +13,6 @@ import {
   ShieldCheck,
   Sparkles,
   Target,
-  WandSparkles,
 } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { Link } from "react-router";
