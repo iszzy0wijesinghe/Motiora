@@ -18,8 +18,14 @@ const orbitStars = [
   { x: "91%", y: "58%", delay: 0.56, size: 2, moveX: -78, moveY: -48 },
 ];
 
+function getDesktopPortalState() {
+  if (typeof window === "undefined") return false;
+
+  return window.matchMedia("(min-width: 1024px) and (pointer: fine)").matches;
+}
+
 function useDesktopPortal() {
-  const [enabled, setEnabled] = useState(false);
+  const [enabled, setEnabled] = useState(getDesktopPortalState);
 
   useEffect(() => {
     if (typeof window === "undefined") return;

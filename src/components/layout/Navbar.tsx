@@ -1,3 +1,4 @@
+import type { MouseEvent as ReactMouseEvent } from "react";
 import type { LucideIcon } from "lucide-react";
 import {
   ArrowUpRight,
@@ -55,6 +56,17 @@ function Navbar() {
 
   const items = useMemo(() => navItems.filter((item) => item.href !== "/"), []);
 
+  const handleMobileLinkClick = (
+    event: ReactMouseEvent<HTMLAnchorElement>,
+    active: boolean,
+  ) => {
+    if (active) {
+      event.preventDefault();
+    }
+
+    setOpen(false);
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
 
@@ -65,6 +77,8 @@ function Navbar() {
   }, []);
 
   useEffect(() => {
+    if (!open) return;
+
     setOpen(false);
   }, [location.pathname]);
 
@@ -90,7 +104,7 @@ function Navbar() {
 
   return (
     <>
-      {/* Desktop left command rail - unchanged */}
+      {/* Desktop left command rail */}
       <aside className="fixed bottom-4 left-4 top-4 z-50 hidden w-[64px] flex-col items-center justify-between rounded-[2rem] border border-[#f6f8ef]/10 bg-[#070907]/78 px-2 py-3 shadow-[0_20px_70px_rgba(0,0,0,0.35)] backdrop-blur-2xl lg:flex">
         <Mark />
 
@@ -175,10 +189,10 @@ function Navbar() {
       {/* Mobile top bar */}
       <header className="fixed inset-x-0 top-0 z-[70] px-4 pt-3 lg:hidden">
         <nav
-          className={`mx-auto flex h-[56px] items-center justify-between rounded-full px-3 transition duration-300 ${
+          className={`mx-auto flex h-[54px] items-center justify-between rounded-full px-3 transition duration-300 ${
             scrolled || open
-              ? "border border-[#f6f8ef]/12 bg-[#070907]/90 shadow-[0_18px_58px_rgba(0,0,0,0.42)] backdrop-blur-2xl"
-              : "border border-[#f6f8ef]/[0.07] bg-[#070907]/58 shadow-[0_14px_44px_rgba(0,0,0,0.24)] backdrop-blur-xl"
+              ? "border border-[#f6f8ef]/12 bg-[#070907]/90 shadow-[0_16px_48px_rgba(0,0,0,0.38)] backdrop-blur-2xl"
+              : "border border-[#f6f8ef]/[0.07] bg-[#070907]/58 shadow-[0_12px_36px_rgba(0,0,0,0.22)] backdrop-blur-xl"
           }`}
         >
           <div className="flex items-center gap-2.5">
@@ -206,63 +220,48 @@ function Navbar() {
         </nav>
       </header>
 
-      {/* Mobile full screen menu */}
-      <AnimatePresence>
+      {/* Mobile compact full screen menu */}
+      <AnimatePresence initial={false}>
         {open && (
           <motion.div
-            className="fixed inset-0 z-[60] overflow-y-auto bg-[#070907]/96 px-4 pb-6 pt-[86px] backdrop-blur-2xl lg:hidden"
+            className="fixed inset-0 z-[60] overflow-y-auto bg-[#070907]/94 px-4 pb-5 pt-[78px] backdrop-blur-xl lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.16, ease: "easeOut" }}
           >
-            <motion.div
-              className="pointer-events-none absolute left-[-22%] top-[6%] h-72 w-72 rounded-full bg-[#d8ff73]/10 blur-3xl"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-            />
+            <div className="pointer-events-none absolute left-[-18%] top-[10%] h-52 w-52 rounded-full bg-[#d8ff73]/8 blur-3xl" />
+            <div className="pointer-events-none absolute bottom-[-12%] right-[-18%] h-56 w-56 rounded-full bg-[#f6c85f]/8 blur-3xl" />
 
             <motion.div
-              className="pointer-events-none absolute bottom-[-16%] right-[-20%] h-80 w-80 rounded-full bg-[#f6c85f]/10 blur-3xl"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-            />
-
-            <motion.div
-              className="relative mx-auto flex min-h-[calc(100vh-110px)] max-w-lg flex-col"
-              initial={{ opacity: 0, y: 18, scale: 0.98 }}
+              className="relative mx-auto max-w-md"
+              initial={{ opacity: 0, y: 10, scale: 0.985 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 12, scale: 0.98 }}
-              transition={{ duration: 0.24, ease: "easeOut" }}
+              exit={{ opacity: 0, y: 8, scale: 0.985 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
             >
-              <div className="rounded-[2rem] border border-white/10 bg-white/[0.035] p-4 shadow-2xl shadow-black/35">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <div className="inline-flex items-center gap-2 rounded-full border border-[#d8ff73]/18 bg-[#d8ff73]/8 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.18em] text-[#d8ff73]">
-                      <Sparkles size={12} />
-                      Navigation
-                    </div>
-
-                    <h2 className="mt-4 max-w-[260px] text-[34px] font-black leading-[0.96] tracking-[-0.06em] text-white">
-                      Move through Motiora.
-                    </h2>
-
-                    <p className="mt-3 max-w-sm text-sm leading-6 text-[#9aa69a]">
-                      Explore projects, tools, studio direction, and contact
-                      options.
-                    </p>
-                  </div>
+              <div className="rounded-[1.35rem] border border-white/10 bg-white/[0.035] p-3 shadow-xl shadow-black/30">
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#d8ff73]/18 bg-[#d8ff73]/8 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.18em] text-[#d8ff73]">
+                  <Sparkles size={11} />
+                  Navigation
                 </div>
+
+                <h2 className="mt-3 text-[24px] font-black leading-[0.98] tracking-[-0.055em] text-white">
+                  Move through Motiora.
+                </h2>
+
+                <p className="mt-2 text-xs leading-5 text-[#9aa69a]">
+                  Explore projects, tools, studio direction, and contact.
+                </p>
               </div>
 
-              <nav aria-label="Mobile navigation" className="mt-4 grid gap-2">
+              <nav aria-label="Mobile navigation" className="mt-3 grid gap-1.5">
                 <Link
                   to="/"
-                  className={`group flex items-center justify-between rounded-[1.35rem] border px-4 py-4 transition active:scale-[0.99] ${
+                  onClick={(event) =>
+                    handleMobileLinkClick(event, location.pathname === "/")
+                  }
+                  className={`group flex items-center justify-between rounded-[1.05rem] border px-3.5 py-3 transition active:scale-[0.99] ${
                     location.pathname === "/"
                       ? "border-[#d8ff73]/70 bg-[#d8ff73] text-[#11160b]"
                       : "border-white/10 bg-white/[0.04] text-white"
@@ -270,21 +269,29 @@ function Navbar() {
                 >
                   <span className="flex items-center gap-3">
                     <span
-                      className={`grid h-10 w-10 place-items-center rounded-full ${
+                      className={`grid h-9 w-9 place-items-center rounded-full ${
                         location.pathname === "/"
-                          ? "bg-[#11160b]/10"
+                          ? "bg-[#11160b]/10 text-[#11160b]"
                           : "bg-white/[0.055] text-[#d8ff73]"
                       }`}
                     >
-                      <Home size={18} />
+                      <Home size={17} />
                     </span>
 
                     <span>
-                      <span className="block text-base font-black">Home</span>
                       <span
-                        className={`mt-0.5 block text-[11px] font-bold ${
+                        className={`block text-sm font-black ${
                           location.pathname === "/"
-                            ? "text-[#11160b]/60"
+                            ? "text-[#11160b]"
+                            : "text-white"
+                        }`}
+                      >
+                        Home
+                      </span>
+                      <span
+                        className={`mt-0.5 block text-[10px] font-bold ${
+                          location.pathname === "/"
+                            ? "text-[#11160b]/65"
                             : "text-[#9aa69a]"
                         }`}
                       >
@@ -294,7 +301,7 @@ function Navbar() {
                   </span>
 
                   <ArrowUpRight
-                    size={17}
+                    size={16}
                     className={
                       location.pathname === "/"
                         ? "text-[#11160b]/70"
@@ -311,7 +318,8 @@ function Navbar() {
                     <Link
                       key={item.href}
                       to={item.href}
-                      className={`group flex items-center justify-between rounded-[1.35rem] border px-4 py-4 transition active:scale-[0.99] ${
+                      onClick={(event) => handleMobileLinkClick(event, active)}
+                      className={`group flex items-center justify-between rounded-[1.05rem] border px-3.5 py-3 transition active:scale-[0.99] ${
                         active
                           ? "border-[#d8ff73]/70 bg-[#d8ff73] text-[#11160b]"
                           : "border-white/10 bg-white/[0.04] text-white"
@@ -319,22 +327,26 @@ function Navbar() {
                     >
                       <span className="flex items-center gap-3">
                         <span
-                          className={`grid h-10 w-10 place-items-center rounded-full ${
+                          className={`grid h-9 w-9 place-items-center rounded-full ${
                             active
-                              ? "bg-[#11160b]/10"
+                              ? "bg-[#11160b]/10 text-[#11160b]"
                               : "bg-white/[0.055] text-[#d8ff73]"
                           }`}
                         >
-                          <Icon size={18} />
+                          <Icon size={17} />
                         </span>
 
                         <span>
-                          <span className="block text-base font-black">
+                          <span
+                            className={`block text-sm font-black ${
+                              active ? "text-[#11160b]" : "text-white"
+                            }`}
+                          >
                             {item.label}
                           </span>
                           <span
-                            className={`mt-0.5 block text-[11px] font-bold ${
-                              active ? "text-[#11160b]/60" : "text-[#9aa69a]"
+                            className={`mt-0.5 block text-[10px] font-bold ${
+                              active ? "text-[#11160b]/65" : "text-[#9aa69a]"
                             }`}
                           >
                             Open {item.label.toLowerCase()}
@@ -343,7 +355,7 @@ function Navbar() {
                       </span>
 
                       <ArrowUpRight
-                        size={17}
+                        size={16}
                         className={
                           active ? "text-[#11160b]/70" : "text-[#d8ff73]"
                         }
@@ -353,20 +365,24 @@ function Navbar() {
                 })}
               </nav>
 
-              <div className="mt-auto pt-5">
-                <Link
-                  to="/contact"
-                  className="forge-primary flex items-center justify-center gap-2 rounded-[1.35rem] px-5 py-4 text-sm font-black"
-                >
-                  Start project
-                  <ArrowUpRight size={17} />
-                </Link>
+              <Link
+                to="/contact"
+                onClick={(event) =>
+                  handleMobileLinkClick(
+                    event,
+                    location.pathname.startsWith("/contact"),
+                  )
+                }
+                className="forge-primary mt-3 flex items-center justify-center gap-2 rounded-[1.05rem] px-4 py-3 text-sm font-black"
+              >
+                Start project
+                <ArrowUpRight size={16} />
+              </Link>
 
-                <p className="mx-auto mt-4 max-w-xs text-center text-[11px] font-bold leading-5 text-[#8d9a87]">
-                  Premium software, lightweight tools, and launch-ready digital
-                  products.
-                </p>
-              </div>
+              <p className="mx-auto mt-3 max-w-xs text-center text-[10px] font-bold leading-5 text-[#8d9a87]">
+                Premium software, lightweight tools, and launch-ready digital
+                products.
+              </p>
             </motion.div>
           </motion.div>
         )}
