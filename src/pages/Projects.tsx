@@ -1,52 +1,85 @@
+/** @format */
+
 import type { ReactNode } from "react";
 import {
   ArrowRight,
   CheckCircle2,
+  ExternalLink,
   FileCode2,
   Gauge,
   Layers3,
-  LineChart,
   MoveRight,
+  Rocket,
   Target,
 } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { Link } from "react-router";
-import { featuredProjects } from "../data/site";
+import { projectRecords } from "../data/projects";
 
 const projectSignals = [
   {
-    title: "Problem clarity",
+    title: "Clear business purpose",
     description:
-      "Each project starts by identifying the actual workflow issue, business gap, or user friction.",
+      "Every project starts with the business goal, customer need, and workflow problem it should solve.",
     icon: Target,
   },
   {
-    title: "System structure",
+    title: "Structured product flow",
     description:
-      "Screens, modules, roles, data flow, and navigation are planned before the interface is polished.",
+      "Pages, modules, actions, and user journeys are planned before the interface is polished.",
     icon: Layers3,
   },
   {
-    title: "Technical execution",
+    title: "Reliable build direction",
     description:
-      "Frontend, backend, database, APIs, and integrations are treated as one connected product.",
+      "Frontend, backend, data, integrations, and future scaling are considered as one connected product.",
     icon: FileCode2,
   },
   {
-    title: "Launch value",
+    title: "Customer-ready delivery",
     description:
-      "The final result must be usable, maintainable, fast enough, and ready for real business operation.",
+      "The final result should feel usable, professional, maintainable, and ready to support real business use.",
     icon: Gauge,
   },
 ];
 
 const proofPoints = [
-  "Clear user journey",
-  "Useful business flow",
-  "Clean interface states",
-  "Maintainable code direction",
-  "Performance-aware UI",
-  "Launch-ready structure",
+  "Clear customer journey",
+  "Business-focused structure",
+  "Professional interface direction",
+  "Maintainable technical base",
+  "Responsive user experience",
+  "Ready for future improvements",
+];
+
+const caseMap = [
+  {
+    title: "Visual preview",
+    description: "Project cards show the first approved visual direction.",
+    icon: Layers3,
+  },
+  {
+    title: "Project story",
+    description: "Each detail page explains the challenge and solution.",
+    icon: Target,
+  },
+  {
+    title: "System value",
+    description: "Features and outcomes are written for customer understanding.",
+    icon: FileCode2,
+  },
+  {
+    title: "Next action",
+    description: "Visitors can view the site or start a similar project.",
+    icon: Rocket,
+  },
+];
+
+const previewGradients = [
+  "from-[#d8ff73]/22 via-[#8aff80]/10 to-[#070907]",
+  "from-[#f6c85f]/22 via-[#d8ff73]/10 to-[#070907]",
+  "from-[#8aff80]/20 via-[#d8ff73]/10 to-[#070907]",
+  "from-[#d8ff73]/16 via-[#f6c85f]/12 to-[#070907]",
 ];
 
 function Reveal({
@@ -97,8 +130,7 @@ function Label({
 function ProjectsPageOrbit() {
   const reduceMotion = useReducedMotion();
 
-  const orbitPath =
-    "M90 235 C90 80 725 80 725 235 C725 390 90 390 90 235Z";
+  const orbitPath = "M90 235 C90 80 725 80 725 235 C725 390 90 390 90 235Z";
 
   return (
     <div className="pointer-events-none absolute right-[-190px] top-[-95px] hidden h-[460px] w-[820px] opacity-90 lg:block">
@@ -161,31 +193,31 @@ function Projects() {
         <ProjectsPageOrbit />
 
         <div className="relative z-10 mx-auto max-w-6xl">
-          <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
+          <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              <Label>Project proof</Label>
+              <Label>Selected work</Label>
 
-              <h1 className="text-balance max-w-3xl text-[34px] font-black leading-[1.05] tracking-[-0.045em] text-white sm:text-[44px] lg:text-[56px]">
-                Work shaped around{" "}
-                <span className="forge-gradient">problems, systems, and measurable value.</span>
+              <h1 className="text-balance max-w-3xl text-[34px] font-black leading-[1.04] tracking-[-0.05em] text-white sm:text-[44px] lg:text-[58px]">
+                Digital projects built to look sharp, work clearly, and support{" "}
+                <span className="forge-gradient">real business goals.</span>
               </h1>
 
               <p className="mt-5 max-w-2xl text-[15px] leading-7 text-[#aeb8aa]">
-                This page is where Motiora work is presented as proof: what the
-                project needed, how the product direction was shaped, and what
-                kind of value the final system was designed to create.
+                Explore Motiora project work through customer-ready previews.
+                Each project page shows what was built, why it matters, how it
+                works, and how it can support a real business workflow.
               </p>
 
-              <div className="mt-7 flex flex-wrap gap-3">
+              <div className="mt-8 grid gap-3 sm:max-w-xl sm:grid-cols-2">
                 <Link
                   to="/contact"
-                  className="forge-primary group inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-black transition hover:-translate-y-0.5"
+                  className="forge-primary group inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-black transition hover:-translate-y-0.5"
                 >
-                  Discuss a project
+                  Start a project
                   <ArrowRight
                     size={17}
                     className="transition group-hover:translate-x-1"
@@ -194,7 +226,7 @@ function Projects() {
 
                 <Link
                   to="/tools"
-                  className="forge-ghost inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold text-[#dce5d8] transition hover:-translate-y-0.5 hover:text-[#d8ff73]"
+                  className="forge-ghost inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold text-[#dce5d8] transition hover:-translate-y-0.5 hover:text-[#d8ff73]"
                 >
                   View tools
                   <MoveRight size={16} />
@@ -203,36 +235,58 @@ function Projects() {
             </motion.div>
 
             <Reveal delay={0.06}>
-              <div className="rounded-[1.8rem] border border-white/[0.08] bg-white/[0.022] p-5">
-                <div className="mb-5 flex items-center justify-between">
-                  <div>
+              <div className="relative overflow-hidden rounded-[1.9rem] border border-white/[0.08] bg-[#0b0f0b]/72 p-5 shadow-[0_22px_70px_rgba(0,0,0,0.28)]">
+                <div className="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-[#d8ff73]/10 blur-3xl" />
+                <div className="absolute -bottom-20 left-10 h-44 w-44 rounded-full bg-[#f6c85f]/10 blur-3xl" />
+
+                <div className="relative">
+                  <div className="mb-6">
                     <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#d8ff73]">
-                      Project lens
+                      Project experience
                     </p>
-                    <h2 className="mt-2 text-xl font-black tracking-[-0.03em] text-white">
-                      How each work item is judged
+
+                    <h2 className="mt-2 text-[24px] font-black leading-tight tracking-[-0.04em] text-white">
+                      Each case page is built to explain the work clearly.
                     </h2>
+
+                    <p className="mt-3 text-sm leading-6 text-[#9aa69a]">
+                      Instead of a flat gallery, each project has a dedicated
+                      page with visuals, context, features, value, and next
+                      actions.
+                    </p>
                   </div>
 
-                  <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[#d8ff73]/14 bg-[#d8ff73]/10 text-[#d8ff73]">
-                    <LineChart size={22} />
-                  </div>
-                </div>
+                  <div className="grid gap-3">
+                    {caseMap.map((item, index) => {
+                      const Icon = item.icon;
 
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {["Need", "Flow", "Build", "Outcome"].map((item, index) => (
-                    <div
-                      key={item}
-                      className="rounded-[1.15rem] border border-white/[0.07] bg-[#070907]/58 p-4"
-                    >
-                      <p className="text-[24px] font-black tracking-[-0.04em] text-[#d8ff73]">
-                        0{index + 1}
-                      </p>
-                      <p className="mt-2 text-xs font-black uppercase tracking-[0.14em] text-[#8d9a87]">
-                        {item}
-                      </p>
-                    </div>
-                  ))}
+                      return (
+                        <div
+                          key={item.title}
+                          className="group flex items-start gap-3 rounded-[1.15rem] border border-white/[0.07] bg-[#070907]/68 p-3.5 transition hover:border-[#d8ff73]/24 hover:bg-[#d8ff73]/[0.035]"
+                        >
+                          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-[#d8ff73]/14 bg-[#d8ff73]/10 text-[#d8ff73]">
+                            <Icon size={18} />
+                          </div>
+
+                          <div className="min-w-0">
+                            <div className="flex items-center gap-2">
+                              <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#64705f]">
+                                0{index + 1}
+                              </p>
+                              <p className="text-sm font-black tracking-[-0.02em] text-white">
+                                {item.title}
+                              </p>
+                            </div>
+
+                            <p className="mt-1.5 text-xs leading-5 text-[#8d9a87]">
+                              {item.description}
+                            </p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -244,17 +298,185 @@ function Projects() {
 
       <section className="px-5 py-16 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-6xl">
+          <Reveal className="mb-8 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+            <div className="max-w-2xl">
+              <Label>Project showcase</Label>
+
+              <h2 className="text-balance text-[27px] font-black leading-tight tracking-[-0.035em] text-white md:text-[36px]">
+                Featured projects with dedicated case pages.
+              </h2>
+
+              <p className="mt-4 text-sm leading-7 text-[#9aa69a]">
+                These cards give a quick overview. Open a project to view the
+                full project story, approved images, core features, technology
+                stack, and site link when available.
+              </p>
+            </div>
+
+            <Link
+              to="/contact"
+              className="forge-ghost inline-flex w-fit items-center gap-2 rounded-full px-4 py-2.5 text-sm font-bold text-white transition hover:text-[#d8ff73]"
+            >
+              Build something similar
+              <ArrowRight size={15} />
+            </Link>
+          </Reveal>
+
+          <div className="grid gap-5 md:grid-cols-2">
+            {projectRecords.map((project, index) => {
+              const gradient =
+                previewGradients[index % previewGradients.length];
+
+              return (
+                <Reveal key={project.slug} delay={index * 0.04}>
+                  <motion.article
+                    className="group relative overflow-hidden rounded-[1.7rem] border border-white/[0.08] bg-[#070907]/76 transition hover:border-[#d8ff73]/28 hover:bg-[#0b0f0b]/92"
+                    whileHover={
+                      reduceMotion
+                        ? undefined
+                        : {
+                            y: -5,
+                            scale: 1.005,
+                          }
+                    }
+                    transition={{ duration: 0.22, ease: "easeOut" }}
+                  >
+                    <div className="relative aspect-[16/10] overflow-hidden border-b border-white/[0.07] bg-[#0d130d]">
+                      {project.cardImage ? (
+                        <img
+                          src={project.cardImage}
+                          alt={project.title}
+                          className="h-full w-full object-cover opacity-90 transition duration-500 group-hover:scale-[1.04] group-hover:opacity-100"
+                          style={{
+                            objectPosition:
+                              project.cardImagePosition || "center center",
+                          }}
+                          draggable={false}
+                        />
+                      ) : (
+                        <div
+                          className={`relative h-full w-full bg-gradient-to-br ${gradient}`}
+                        >
+                          <div className="absolute left-6 top-6 rounded-full border border-[#d8ff73]/18 bg-[#070907]/72 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.18em] text-[#d8ff73] backdrop-blur-md">
+                            Preview coming soon
+                          </div>
+
+                          <div className="absolute bottom-6 left-6 right-6">
+                            <div className="mb-4 grid h-14 w-14 place-items-center rounded-2xl border border-[#d8ff73]/18 bg-[#070907]/70 text-[#d8ff73] backdrop-blur-md">
+                              <FileCode2 size={24} />
+                            </div>
+
+                            <div className="h-3 w-3/4 rounded-full bg-white/12" />
+                            <div className="mt-3 h-3 w-1/2 rounded-full bg-[#d8ff73]/18" />
+                          </div>
+
+                          <div className="absolute -right-20 -top-20 h-52 w-52 rounded-full bg-[#d8ff73]/10 blur-3xl" />
+                          <div className="absolute -bottom-20 left-10 h-44 w-44 rounded-full bg-[#f6c85f]/10 blur-3xl" />
+                        </div>
+                      )}
+
+                      <div className="absolute right-4 top-4 rounded-full bg-[#f6c85f]/12 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.14em] text-[#f6c85f] backdrop-blur-md">
+                        {project.category}
+                      </div>
+                    </div>
+
+                    <div className="p-5">
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#64705f]">
+                            Project 0{index + 1}
+                          </p>
+
+                          <h3 className="mt-2 text-xl font-black tracking-[-0.03em] text-white">
+                            {project.title}
+                          </h3>
+                        </div>
+
+                        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#d8ff73]/16 bg-[#d8ff73]/10 text-[#d8ff73]">
+                          <Rocket size={18} />
+                        </div>
+                      </div>
+
+                      <p className="mt-3 line-clamp-3 text-sm leading-7 text-[#9aa69a]">
+                        {project.shortDescription}
+                      </p>
+
+                      <div className="mt-5 grid gap-3 sm:grid-cols-3">
+                        <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] px-3 py-3">
+                          <p className="text-[9px] font-black uppercase tracking-[0.16em] text-[#64705f]">
+                            Focus
+                          </p>
+                          <p className="mt-1 text-xs font-semibold text-[#c3cbbd]">
+                            {project.category}
+                          </p>
+                        </div>
+
+                        <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] px-3 py-3">
+                          <p className="text-[9px] font-black uppercase tracking-[0.16em] text-[#64705f]">
+                            Delivery
+                          </p>
+                          <p className="mt-1 text-xs font-semibold text-[#c3cbbd]">
+                            {project.year || "Latest"}
+                          </p>
+                        </div>
+
+                        <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] px-3 py-3">
+                          <p className="text-[9px] font-black uppercase tracking-[0.16em] text-[#64705f]">
+                            Images
+                          </p>
+                          <p className="mt-1 text-xs font-semibold text-[#c3cbbd]">
+                            {project.galleryImages?.length || 0} views
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="mt-5 flex flex-wrap gap-2.5">
+                        <Link
+                          to={`/projects/${project.slug}`}
+                          className="inline-flex items-center gap-2 rounded-full border border-[#d8ff73]/18 bg-[#d8ff73]/10 px-4 py-2.5 text-xs font-black text-[#d8ff73] transition hover:bg-[#d8ff73] hover:text-[#11160b]"
+                        >
+                          View project
+                          <ArrowRight size={14} />
+                        </Link>
+
+                        {project.liveUrl ? (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2.5 text-xs font-bold text-[#c3cbbd] transition hover:border-[#d8ff73]/28 hover:text-[#d8ff73]"
+                          >
+                            Visit site
+                            <ExternalLink size={13} />
+                          </a>
+                        ) : (
+                          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2.5 text-xs font-bold text-[#9aa69a]">
+                            Site link pending
+                            <ExternalLink size={13} />
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </motion.article>
+                </Reveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-5 py-16 lg:px-8 lg:py-24">
+        <div className="mx-auto max-w-6xl">
           <Reveal className="mb-8 max-w-2xl">
-            <Label tone="amber">Case file index</Label>
+            <Label tone="amber">Delivery standard</Label>
 
             <h2 className="text-balance text-[27px] font-black leading-tight tracking-[-0.035em] text-white md:text-[36px]">
-              Each project is treated like a product decision, not a visual task.
+              Designed to be useful after launch, not only impressive on screen.
             </h2>
 
             <p className="mt-4 text-sm leading-7 text-[#9aa69a]">
-              Instead of repeating what Motiora builds, this section shows how
-              work is evaluated: problem, direction, system value, and delivery
-              quality.
+              A strong project should communicate clearly, support the business
+              process, stay maintainable, and be ready for future improvements.
             </p>
           </Reveal>
 
@@ -306,112 +528,19 @@ function Projects() {
       </section>
 
       <section className="px-5 py-16 lg:px-8 lg:py-24">
-        <div className="mx-auto max-w-6xl">
-          <Reveal className="mb-8 max-w-2xl">
-            <Label>Work records</Label>
-
-            <h2 className="text-balance text-[27px] font-black leading-tight tracking-[-0.035em] text-white md:text-[36px]">
-              Selected work, shown as delivery records.
-            </h2>
-
-            <p className="mt-4 text-sm leading-7 text-[#9aa69a]">
-              These entries are intentionally structured like records, so each
-              project can later expand into a full case study with screenshots,
-              stack details, and measurable outcomes.
-            </p>
-          </Reveal>
-
-          <div className="grid gap-4">
-            {featuredProjects.map((project, index) => (
-              <Reveal key={project.title} delay={index * 0.04}>
-                <motion.article
-                  className="group rounded-[1.6rem] border border-white/[0.08] bg-white/[0.022] p-5 transition hover:border-[#d8ff73]/24 hover:bg-[#d8ff73]/[0.035]"
-                  whileHover={
-                    reduceMotion
-                      ? undefined
-                      : {
-                          y: -4,
-                        }
-                  }
-                  transition={{ duration: 0.22, ease: "easeOut" }}
-                >
-                  <div className="grid gap-5 md:grid-cols-[56px_1fr_auto] md:items-start">
-                    <div className="grid h-14 w-14 place-items-center rounded-2xl border border-[#d8ff73]/14 bg-[#d8ff73]/10 text-[#d8ff73]">
-                      <FileCode2 size={22} />
-                    </div>
-
-                    <div>
-                      <div className="flex flex-wrap items-center gap-2">
-                        <h3 className="text-lg font-black tracking-[-0.02em] text-white">
-                          {project.title}
-                        </h3>
-
-                        <span className="rounded-full bg-[#f6c85f]/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-[#f6c85f]">
-                          {project.category}
-                        </span>
-                      </div>
-
-                      <p className="mt-2 max-w-3xl text-sm leading-7 text-[#9aa69a]">
-                        {project.description}
-                      </p>
-                    </div>
-
-                    <div className="flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.16em] text-[#64705f] transition group-hover:text-[#d8ff73]">
-                      Record 0{index + 1}
-                      <ArrowRight size={15} />
-                    </div>
-                  </div>
-
-                  <div className="mt-5 grid gap-3 border-t border-white/[0.07] pt-5 md:grid-cols-3">
-                    <div>
-                      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#64705f]">
-                        Problem
-                      </p>
-                      <p className="mt-2 text-sm leading-6 text-[#c3cbbd]">
-                        Manual, unclear, or under-optimized digital workflow.
-                      </p>
-                    </div>
-
-                    <div>
-                      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#64705f]">
-                        Direction
-                      </p>
-                      <p className="mt-2 text-sm leading-6 text-[#c3cbbd]">
-                        Structured product flow with clear interface behavior.
-                      </p>
-                    </div>
-
-                    <div>
-                      <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#64705f]">
-                        Value
-                      </p>
-                      <p className="mt-2 text-sm leading-6 text-[#c3cbbd]">
-                        Better usability, cleaner operation, and stronger launch
-                        readiness.
-                      </p>
-                    </div>
-                  </div>
-                </motion.article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-5 py-16 lg:px-8 lg:py-24">
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[0.72fr_1.28fr]">
           <Reveal>
             <div className="rounded-[1.7rem] border border-[#d8ff73]/18 bg-[#0d130d]/68 p-6 md:p-8">
-              <Label tone="amber">Proof checklist</Label>
+              <Label tone="amber">Project checklist</Label>
 
               <h2 className="text-balance text-[26px] font-black leading-tight tracking-[-0.035em] text-white md:text-[34px]">
-                What a project must prove before it feels complete.
+                What every finished project should deliver.
               </h2>
 
               <p className="mt-4 text-sm leading-7 text-[#9aa69a]">
-                A finished project should not only look premium. It should show
-                that the user flow, technical structure, and business use case
-                are strong enough to continue growing.
+                A project should not only look premium. It should guide
+                customers clearly, support the workflow, and give the business a
+                stronger digital base.
               </p>
             </div>
           </Reveal>
@@ -433,24 +562,34 @@ function Projects() {
 
       <section className="px-5 py-16 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-6xl">
-          <div className="flex flex-col items-start justify-between gap-6 border-y border-white/[0.08] py-10 md:flex-row md:items-center">
-            <div>
-              <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#d8ff73]">
-                Build the next record
-              </p>
+          <div className="relative overflow-hidden rounded-[1.8rem] border border-white/[0.08] bg-[#0d130d]/68 p-6 md:p-8">
+            <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#d8ff73]/10 blur-3xl" />
 
-              <h2 className="mt-4 text-balance max-w-2xl text-[26px] font-black leading-tight tracking-[-0.035em] text-white md:text-[35px]">
-                Have a project that needs to become a strong case study?
-              </h2>
+            <div className="relative flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+              <div>
+                <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#d8ff73]">
+                  Start your project
+                </p>
+
+                <h2 className="mt-4 text-balance max-w-2xl text-[26px] font-black leading-tight tracking-[-0.035em] text-white md:text-[35px]">
+                  Need a website, system, or tool that feels ready for real
+                  customers?
+                </h2>
+
+                <p className="mt-3 max-w-xl text-sm leading-7 text-[#9aa69a]">
+                  Share the workflow, business goal, or idea. Motiora can shape
+                  it into a clear digital product direction.
+                </p>
+              </div>
+
+              <Link
+                to="/contact"
+                className="forge-primary inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-black transition hover:-translate-y-0.5"
+              >
+                Start discussion
+                <ArrowRight size={17} />
+              </Link>
             </div>
-
-            <Link
-              to="/contact"
-              className="forge-primary inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-black transition hover:-translate-y-0.5"
-            >
-              Start discussion
-              <ArrowRight size={17} />
-            </Link>
           </div>
         </div>
       </section>
