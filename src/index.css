@@ -134,6 +134,8 @@ a {
     );
 }
 
+
+
 .forge-gradient {
   background: linear-gradient(90deg, #ffffff 0%, #c9ff3b 48%, #f6c85f 100%);
   -webkit-background-clip: text;
