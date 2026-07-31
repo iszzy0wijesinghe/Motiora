@@ -1321,3 +1321,35 @@ a {
   color: #d8ff73;
   text-decoration-color: rgba(216, 255, 115, 0.8);
 }
+
+/* Privacy page mobile readability */
+
+.policy-copy {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.policy-copy p,
+.policy-copy li,
+.policy-copy span {
+  max-width: 100%;
+}
+
+.policy-copy ul {
+  margin: 0;
+  padding: 0;
+}
+
+details > summary {
+  -webkit-tap-highlight-color: transparent;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (max-width: 639px) {
+  .policy-copy {
+    letter-spacing: 0;
+  }
+}
