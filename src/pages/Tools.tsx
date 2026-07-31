@@ -18,7 +18,6 @@ import {
   Merge,
   Minimize2,
   Repeat2,
-  ScanText,
   ShieldCheck,
   Sparkles,
   WandSparkles,
