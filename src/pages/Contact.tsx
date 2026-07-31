@@ -17,9 +17,9 @@ import {
 import { motion, useReducedMotion } from "motion/react";
 import { Link } from "react-router";
 
-const CONTACT_EMAIL = "hello@motiora.com";
-const CONTACT_PHONE = "+94 00 000 0000";
-const WHATSAPP_LINK = "https://wa.me/94XXXXXXXXX";
+const CONTACT_EMAIL = "motiora.lk@gmail.com";
+const CONTACT_PHONE = "+94764433616";
+const WHATSAPP_LINK = "https://wa.me/94764433616";
 
 const inquiryTypes = [
   "Business system",
