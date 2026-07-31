@@ -59,7 +59,7 @@ function ProjectDetails() {
         <div className="mx-auto max-w-6xl">
           <Link
             to="/projects"
-            className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2.5 text-xs font-black text-[#c3cbbd] transition hover:border-[#d8ff73]/30 hover:text-[#d8ff73]"
+            className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2.5 text-xs font-black text-[#c3cbbd] transition hover:border-[#c9ff3b]/30 hover:text-[#c9ff3b]"
           >
             <ArrowLeft size={15} />
             Back to projects
@@ -71,7 +71,7 @@ function ProjectDetails() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, ease: "easeOut" }}
             >
-              <p className="inline-flex items-center gap-2 rounded-full border border-[#d8ff73]/18 bg-[#d8ff73]/8 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-[#d8ff73]">
+              <p className="inline-flex items-center gap-2 rounded-full border border-[#c9ff3b]/18 bg-[#c9ff3b]/8 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-[#c9ff3b]">
                 <FileCode2 size={13} />
                 {project.category}
               </p>
@@ -133,7 +133,7 @@ function ProjectDetails() {
 
                 <Link
                   to="/contact"
-                  className="forge-ghost inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold text-[#dce5d8] transition hover:-translate-y-0.5 hover:text-[#d8ff73]"
+                  className="forge-ghost inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold text-[#dce5d8] transition hover:-translate-y-0.5 hover:text-[#c9ff3b]"
                 >
                   Build similar project
                   <ArrowRight size={16} />
@@ -160,16 +160,16 @@ function ProjectDetails() {
                     draggable={false}
                   />
                 ) : (
-                  <div className="relative h-full w-full bg-gradient-to-br from-[#d8ff73]/20 via-[#8aff80]/10 to-[#070907]">
-                    <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#d8ff73]/12 blur-3xl" />
+                  <div className="relative h-full w-full bg-gradient-to-br from-[#c9ff3b]/20 via-[#c9ff3b]/10 to-[#070907]">
+                    <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#c9ff3b]/12 blur-3xl" />
                     <div className="absolute -bottom-20 left-10 h-48 w-48 rounded-full bg-[#f6c85f]/12 blur-3xl" />
 
                     <div className="absolute bottom-7 left-7 right-7">
-                      <div className="mb-5 grid h-16 w-16 place-items-center rounded-2xl border border-[#d8ff73]/18 bg-[#070907]/70 text-[#d8ff73] backdrop-blur-md">
+                      <div className="mb-5 grid h-16 w-16 place-items-center rounded-2xl border border-[#c9ff3b]/18 bg-[#070907]/70 text-[#c9ff3b] backdrop-blur-md">
                         <FileCode2 size={28} />
                       </div>
 
-                      <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#d8ff73]">
+                      <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#c9ff3b]">
                         Hero image coming soon
                       </p>
 
@@ -219,7 +219,7 @@ function ProjectDetails() {
                 <div
                   className={`mb-5 grid h-11 w-11 place-items-center rounded-2xl border ${
                     item.tone === "lime"
-                      ? "border-[#d8ff73]/15 bg-[#d8ff73]/10 text-[#d8ff73]"
+                      ? "border-[#c9ff3b]/15 bg-[#c9ff3b]/10 text-[#c9ff3b]"
                       : "border-[#f6c85f]/15 bg-[#f6c85f]/10 text-[#f6c85f]"
                   }`}
                 >
@@ -243,7 +243,7 @@ function ProjectDetails() {
         <section className="px-5 py-16 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-6xl">
             <div className="mb-8 max-w-2xl">
-              <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#d8ff73]">
+              <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#c9ff3b]">
                 Project views
               </p>
 
@@ -305,8 +305,8 @@ function ProjectDetails() {
 
       <section className="px-5 py-16 lg:px-8 lg:py-24">
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[0.75fr_1.25fr]">
-          <div className="rounded-[1.7rem] border border-[#d8ff73]/18 bg-[#0d130d]/68 p-6 md:p-8">
-            <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#d8ff73]">
+          <div className="rounded-[1.7rem] border border-[#c9ff3b]/18 bg-[#0d130d]/68 p-6 md:p-8">
+            <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#c9ff3b]">
               Project structure
             </p>
 
@@ -330,7 +330,7 @@ function ProjectDetails() {
               {project.services.map((item) => (
                 <span
                   key={item}
-                  className="rounded-full border border-[#d8ff73]/14 bg-[#d8ff73]/8 px-3.5 py-2 text-[11px] font-black uppercase tracking-[0.12em] text-[#d8ff73]"
+                  className="rounded-full border border-[#c9ff3b]/14 bg-[#c9ff3b]/8 px-3.5 py-2 text-[11px] font-black uppercase tracking-[0.12em] text-[#c9ff3b]"
                 >
                   {item}
                 </span>
@@ -346,7 +346,7 @@ function ProjectDetails() {
               >
                 <CheckCircle2
                   size={17}
-                  className="mt-0.5 shrink-0 text-[#d8ff73]"
+                  className="mt-0.5 shrink-0 text-[#c9ff3b]"
                 />
                 <div>
                   <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#64705f]">
@@ -365,11 +365,11 @@ function ProjectDetails() {
       <section className="px-5 py-16 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-6xl">
           <div className="relative overflow-hidden rounded-[1.8rem] border border-white/[0.08] bg-[#0d130d]/68 p-6 md:p-8">
-            <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#d8ff73]/10 blur-3xl" />
+            <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#c9ff3b]/10 blur-3xl" />
 
             <div className="relative flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
               <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#d8ff73]">
+                <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#c9ff3b]">
                   Similar project
                 </p>
 

@@ -126,12 +126,12 @@ function Label({
   return (
     <div
       className={`mb-4 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.22em] ${
-        tone === "lime" ? "text-[#d8ff73]" : "text-[#f6c85f]"
+        tone === "lime" ? "text-[#c9ff3b]" : "text-[#f6c85f]"
       }`}
     >
       <span
         className={`h-1.5 w-1.5 rounded-full ${
-          tone === "lime" ? "bg-[#d8ff73]" : "bg-[#f6c85f]"
+          tone === "lime" ? "bg-[#c9ff3b]" : "bg-[#f6c85f]"
         }`}
       />
       {children}
@@ -161,15 +161,15 @@ function AboutOrbit() {
             x2="720"
             y2="380"
           >
-            <stop stopColor="#D8FF73" stopOpacity="0.88" />
-            <stop offset="0.55" stopColor="#8AFF80" stopOpacity="0.56" />
+            <stop stopColor="#c9ff3b" stopOpacity="0.88" />
+            <stop offset="0.55" stopColor="#c9ff3b" stopOpacity="0.56" />
             <stop offset="1" stopColor="#F6C85F" stopOpacity="0.78" />
           </linearGradient>
         </defs>
 
         <path
           d={orbitPath}
-          stroke="rgba(216,255,115,0.13)"
+          stroke="rgba(201,255,59,0.13)"
           strokeWidth="1.2"
           strokeDasharray="10 18"
           vectorEffect="non-scaling-stroke"
@@ -242,7 +242,7 @@ function About() {
 
                 <Link
                   to="/projects"
-                  className="forge-ghost inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold text-[#dce5d8] transition hover:-translate-y-0.5 hover:text-[#d8ff73]"
+                  className="forge-ghost inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold text-[#dce5d8] transition hover:-translate-y-0.5 hover:text-[#c9ff3b]"
                 >
                   View project proof
                   <MoveRight size={16} />
@@ -254,7 +254,7 @@ function About() {
               <div className="rounded-[1.8rem] border border-white/[0.08] bg-white/[0.022] p-5">
                 <div className="mb-5 flex items-center justify-between gap-4">
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#d8ff73]">
+                    <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#c9ff3b]">
                       Studio position
                     </p>
 
@@ -263,7 +263,7 @@ function About() {
                     </h2>
                   </div>
 
-                  <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[#d8ff73]/14 bg-[#d8ff73]/10 text-[#d8ff73]">
+                  <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[#c9ff3b]/14 bg-[#c9ff3b]/10 text-[#c9ff3b]">
                     <Sparkles size={22} />
                   </div>
                 </div>
@@ -280,7 +280,7 @@ function About() {
                       key={item}
                       className="rounded-[1.15rem] border border-white/[0.07] bg-[#070907]/58 p-4"
                     >
-                      <p className="text-[24px] font-black tracking-[-0.04em] text-[#d8ff73]">
+                      <p className="text-[24px] font-black tracking-[-0.04em] text-[#c9ff3b]">
                         0{index + 1}
                       </p>
 
@@ -321,7 +321,7 @@ function About() {
               return (
                 <Reveal key={item.title} delay={index * 0.04}>
                   <motion.article
-                    className="relative min-h-[250px] overflow-hidden rounded-[1.55rem] border border-white/[0.085] bg-[#070907]/76 p-5 transition hover:border-[#d8ff73]/28 hover:bg-[#0b0f0b]/92"
+                    className="relative min-h-[250px] overflow-hidden rounded-[1.55rem] border border-white/[0.085] bg-[#070907]/76 p-5 transition hover:border-[#c9ff3b]/28 hover:bg-[#0b0f0b]/92"
                     whileHover={
                       reduceMotion
                         ? undefined
@@ -332,11 +332,11 @@ function About() {
                     }
                     transition={{ duration: 0.22, ease: "easeOut" }}
                   >
-                    <div className="absolute -right-16 -top-16 h-32 w-32 rounded-full bg-[#d8ff73]/[0.04]" />
+                    <div className="absolute -right-16 -top-16 h-32 w-32 rounded-full bg-[#c9ff3b]/[0.04]" />
 
                     <div className="relative">
                       <div className="mb-5 flex items-center justify-between">
-                        <div className="grid h-11 w-11 place-items-center rounded-2xl border border-[#d8ff73]/15 bg-[#d8ff73]/10 text-[#d8ff73]">
+                        <div className="grid h-11 w-11 place-items-center rounded-2xl border border-[#c9ff3b]/15 bg-[#c9ff3b]/10 text-[#c9ff3b]">
                           <Icon size={20} />
                         </div>
 
@@ -364,7 +364,7 @@ function About() {
       <section className="px-5 py-16 lg:px-8 lg:py-24">
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[0.72fr_1.28fr]">
           <Reveal>
-            <div className="rounded-[1.7rem] border border-[#d8ff73]/18 bg-[#0d130d]/68 p-6 md:p-8">
+            <div className="rounded-[1.7rem] border border-[#c9ff3b]/18 bg-[#0d130d]/68 p-6 md:p-8">
               <Label>Studio principles</Label>
 
               <h2 className="text-balance text-[26px] font-black leading-tight tracking-[-0.035em] text-white md:text-[34px]">
@@ -425,7 +425,7 @@ function About() {
             {workingStyle.map((item, index) => (
               <Reveal key={item} delay={index * 0.03}>
                 <div className="flex min-h-[82px] items-center gap-3 rounded-2xl border border-white/[0.08] bg-[#070907]/54 px-4 py-3.5">
-                  <CheckCircle2 size={17} className="shrink-0 text-[#d8ff73]" />
+                  <CheckCircle2 size={17} className="shrink-0 text-[#c9ff3b]" />
                   <span className="text-sm font-semibold leading-6 text-[#c3cbbd]">
                     {item}
                   </span>
@@ -453,7 +453,7 @@ function About() {
                   <div className="absolute -right-14 -top-14 h-28 w-28 rounded-full bg-[#f6c85f]/[0.04]" />
 
                   <div className="relative">
-                    <div className="mb-5 grid h-10 w-10 place-items-center rounded-2xl border border-[#d8ff73]/14 bg-[#d8ff73]/10 text-[#d8ff73]">
+                    <div className="mb-5 grid h-10 w-10 place-items-center rounded-2xl border border-[#c9ff3b]/14 bg-[#c9ff3b]/10 text-[#c9ff3b]">
                       <ShieldCheck size={19} />
                     </div>
 
@@ -473,10 +473,10 @@ function About() {
       </section>
 
       <section className="px-5 py-16 lg:px-8 lg:py-24">
-        <div className="mx-auto max-w-6xl rounded-[1.8rem] border border-[#d8ff73]/18 bg-[#0d130d]/68 p-6 md:p-8">
+        <div className="mx-auto max-w-6xl rounded-[1.8rem] border border-[#c9ff3b]/18 bg-[#0d130d]/68 p-6 md:p-8">
           <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
             <Reveal>
-              <div className="mb-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.24em] text-[#d8ff73]">
+              <div className="mb-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.24em] text-[#c9ff3b]">
                 <MessageSquare size={14} />
                 Communication standard
               </div>
@@ -496,17 +496,17 @@ function About() {
 
               <div className="mt-6 flex flex-wrap gap-3">
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.032] px-3.5 py-2 text-[11px] font-black uppercase tracking-[0.12em] text-[#c3cbbd]">
-                  <Code2 size={14} className="text-[#d8ff73]" />
+                  <Code2 size={14} className="text-[#c9ff3b]" />
                   Clean build
                 </span>
 
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.032] px-3.5 py-2 text-[11px] font-black uppercase tracking-[0.12em] text-[#c3cbbd]">
-                  <Gauge size={14} className="text-[#d8ff73]" />
+                  <Gauge size={14} className="text-[#c9ff3b]" />
                   Clear scope
                 </span>
 
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.032] px-3.5 py-2 text-[11px] font-black uppercase tracking-[0.12em] text-[#c3cbbd]">
-                  <ShieldCheck size={14} className="text-[#d8ff73]" />
+                  <ShieldCheck size={14} className="text-[#c9ff3b]" />
                   Stable direction
                 </span>
               </div>
@@ -519,7 +519,7 @@ function About() {
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col items-start justify-between gap-6 border-y border-white/[0.08] py-10 md:flex-row md:items-center">
             <div>
-              <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#d8ff73]">
+              <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#c9ff3b]">
                 Start with clarity
               </p>
 

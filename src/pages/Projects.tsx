@@ -76,10 +76,10 @@ const caseMap = [
 ];
 
 const previewGradients = [
-  "from-[#d8ff73]/22 via-[#8aff80]/10 to-[#070907]",
-  "from-[#f6c85f]/22 via-[#d8ff73]/10 to-[#070907]",
-  "from-[#8aff80]/20 via-[#d8ff73]/10 to-[#070907]",
-  "from-[#d8ff73]/16 via-[#f6c85f]/12 to-[#070907]",
+  "from-[#c9ff3b]/22 via-[#c9ff3b]/10 to-[#070907]",
+  "from-[#f6c85f]/22 via-[#c9ff3b]/10 to-[#070907]",
+  "from-[#c9ff3b]/20 via-[#c9ff3b]/10 to-[#070907]",
+  "from-[#c9ff3b]/16 via-[#f6c85f]/12 to-[#070907]",
 ];
 
 function Reveal({
@@ -114,12 +114,12 @@ function Label({
   return (
     <div
       className={`mb-4 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.22em] ${
-        tone === "lime" ? "text-[#d8ff73]" : "text-[#f6c85f]"
+        tone === "lime" ? "text-[#c9ff3b]" : "text-[#f6c85f]"
       }`}
     >
       <span
         className={`h-1.5 w-1.5 rounded-full ${
-          tone === "lime" ? "bg-[#d8ff73]" : "bg-[#f6c85f]"
+          tone === "lime" ? "bg-[#c9ff3b]" : "bg-[#f6c85f]"
         }`}
       />
       {children}
@@ -148,15 +148,15 @@ function ProjectsPageOrbit() {
             x2="725"
             y2="390"
           >
-            <stop stopColor="#D8FF73" stopOpacity="0.88" />
-            <stop offset="0.55" stopColor="#8AFF80" stopOpacity="0.58" />
+            <stop stopColor="#c9ff3b" stopOpacity="0.88" />
+            <stop offset="0.55" stopColor="#c9ff3b" stopOpacity="0.58" />
             <stop offset="1" stopColor="#F6C85F" stopOpacity="0.78" />
           </linearGradient>
         </defs>
 
         <path
           d={orbitPath}
-          stroke="rgba(216,255,115,0.13)"
+          stroke="rgba(201,255,59,0.13)"
           strokeWidth="1.2"
           strokeDasharray="10 18"
           vectorEffect="non-scaling-stroke"
@@ -226,7 +226,7 @@ function Projects() {
 
                 <Link
                   to="/tools"
-                  className="forge-ghost inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold text-[#dce5d8] transition hover:-translate-y-0.5 hover:text-[#d8ff73]"
+                  className="forge-ghost inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold text-[#dce5d8] transition hover:-translate-y-0.5 hover:text-[#c9ff3b]"
                 >
                   View tools
                   <MoveRight size={16} />
@@ -236,12 +236,12 @@ function Projects() {
 
             <Reveal delay={0.06}>
               <div className="relative overflow-hidden rounded-[1.9rem] border border-white/[0.08] bg-[#0b0f0b]/72 p-5 shadow-[0_22px_70px_rgba(0,0,0,0.28)]">
-                <div className="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-[#d8ff73]/10 blur-3xl" />
+                <div className="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-[#c9ff3b]/10 blur-3xl" />
                 <div className="absolute -bottom-20 left-10 h-44 w-44 rounded-full bg-[#f6c85f]/10 blur-3xl" />
 
                 <div className="relative">
                   <div className="mb-6">
-                    <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#d8ff73]">
+                    <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#c9ff3b]">
                       Project experience
                     </p>
 
@@ -263,9 +263,9 @@ function Projects() {
                       return (
                         <div
                           key={item.title}
-                          className="group flex items-start gap-3 rounded-[1.15rem] border border-white/[0.07] bg-[#070907]/68 p-3.5 transition hover:border-[#d8ff73]/24 hover:bg-[#d8ff73]/[0.035]"
+                          className="group flex items-start gap-3 rounded-[1.15rem] border border-white/[0.07] bg-[#070907]/68 p-3.5 transition hover:border-[#c9ff3b]/24 hover:bg-[#c9ff3b]/[0.035]"
                         >
-                          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-[#d8ff73]/14 bg-[#d8ff73]/10 text-[#d8ff73]">
+                          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-[#c9ff3b]/14 bg-[#c9ff3b]/10 text-[#c9ff3b]">
                             <Icon size={18} />
                           </div>
 
@@ -315,7 +315,7 @@ function Projects() {
 
             <Link
               to="/contact"
-              className="forge-ghost inline-flex w-fit items-center gap-2 rounded-full px-4 py-2.5 text-sm font-bold text-white transition hover:text-[#d8ff73]"
+              className="forge-ghost inline-flex w-fit items-center gap-2 rounded-full px-4 py-2.5 text-sm font-bold text-white transition hover:text-[#c9ff3b]"
             >
               Build something similar
               <ArrowRight size={15} />
@@ -330,7 +330,7 @@ function Projects() {
               return (
                 <Reveal key={project.slug} delay={index * 0.04}>
                   <motion.article
-                    className="group relative overflow-hidden rounded-[1.7rem] border border-white/[0.08] bg-[#070907]/76 transition hover:border-[#d8ff73]/28 hover:bg-[#0b0f0b]/92"
+                    className="group relative overflow-hidden rounded-[1.7rem] border border-white/[0.08] bg-[#070907]/76 transition hover:border-[#c9ff3b]/28 hover:bg-[#0b0f0b]/92"
                     whileHover={
                       reduceMotion
                         ? undefined
@@ -357,20 +357,20 @@ function Projects() {
                         <div
                           className={`relative h-full w-full bg-gradient-to-br ${gradient}`}
                         >
-                          <div className="absolute left-6 top-6 rounded-full border border-[#d8ff73]/18 bg-[#070907]/72 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.18em] text-[#d8ff73] backdrop-blur-md">
+                          <div className="absolute left-6 top-6 rounded-full border border-[#c9ff3b]/18 bg-[#070907]/72 px-3 py-1.5 text-[10px] font-black uppercase tracking-[0.18em] text-[#c9ff3b] backdrop-blur-md">
                             Preview coming soon
                           </div>
 
                           <div className="absolute bottom-6 left-6 right-6">
-                            <div className="mb-4 grid h-14 w-14 place-items-center rounded-2xl border border-[#d8ff73]/18 bg-[#070907]/70 text-[#d8ff73] backdrop-blur-md">
+                            <div className="mb-4 grid h-14 w-14 place-items-center rounded-2xl border border-[#c9ff3b]/18 bg-[#070907]/70 text-[#c9ff3b] backdrop-blur-md">
                               <FileCode2 size={24} />
                             </div>
 
                             <div className="h-3 w-3/4 rounded-full bg-white/12" />
-                            <div className="mt-3 h-3 w-1/2 rounded-full bg-[#d8ff73]/18" />
+                            <div className="mt-3 h-3 w-1/2 rounded-full bg-[#c9ff3b]/18" />
                           </div>
 
-                          <div className="absolute -right-20 -top-20 h-52 w-52 rounded-full bg-[#d8ff73]/10 blur-3xl" />
+                          <div className="absolute -right-20 -top-20 h-52 w-52 rounded-full bg-[#c9ff3b]/10 blur-3xl" />
                           <div className="absolute -bottom-20 left-10 h-44 w-44 rounded-full bg-[#f6c85f]/10 blur-3xl" />
                         </div>
                       )}
@@ -392,7 +392,7 @@ function Projects() {
                           </h3>
                         </div>
 
-                        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#d8ff73]/16 bg-[#d8ff73]/10 text-[#d8ff73]">
+                        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#c9ff3b]/16 bg-[#c9ff3b]/10 text-[#c9ff3b]">
                           <Rocket size={18} />
                         </div>
                       </div>
@@ -433,7 +433,7 @@ function Projects() {
                       <div className="mt-5 flex flex-wrap gap-2.5">
                         <Link
                           to={`/projects/${project.slug}`}
-                          className="inline-flex items-center gap-2 rounded-full border border-[#d8ff73]/18 bg-[#d8ff73]/10 px-4 py-2.5 text-xs font-black text-[#d8ff73] transition hover:bg-[#d8ff73] hover:text-[#11160b]"
+                          className="inline-flex items-center gap-2 rounded-full border border-[#c9ff3b]/18 bg-[#c9ff3b]/10 px-4 py-2.5 text-xs font-black text-[#c9ff3b] transition hover:bg-[#c9ff3b] hover:text-[#11160b]"
                         >
                           View project
                           <ArrowRight size={14} />
@@ -444,7 +444,7 @@ function Projects() {
                             href={project.liveUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2.5 text-xs font-bold text-[#c3cbbd] transition hover:border-[#d8ff73]/28 hover:text-[#d8ff73]"
+                            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.035] px-4 py-2.5 text-xs font-bold text-[#c3cbbd] transition hover:border-[#c9ff3b]/28 hover:text-[#c9ff3b]"
                           >
                             Visit site
                             <ExternalLink size={13} />
@@ -487,7 +487,7 @@ function Projects() {
               return (
                 <Reveal key={item.title} delay={index * 0.04}>
                   <motion.article
-                    className="relative min-h-[245px] overflow-hidden rounded-[1.55rem] border border-white/[0.085] bg-[#070907]/76 p-5 transition hover:border-[#d8ff73]/28 hover:bg-[#0b0f0b]/92"
+                    className="relative min-h-[245px] overflow-hidden rounded-[1.55rem] border border-white/[0.085] bg-[#070907]/76 p-5 transition hover:border-[#c9ff3b]/28 hover:bg-[#0b0f0b]/92"
                     whileHover={
                       reduceMotion
                         ? undefined
@@ -498,11 +498,11 @@ function Projects() {
                     }
                     transition={{ duration: 0.22, ease: "easeOut" }}
                   >
-                    <div className="absolute -right-16 -top-16 h-32 w-32 rounded-full bg-[#d8ff73]/[0.04]" />
+                    <div className="absolute -right-16 -top-16 h-32 w-32 rounded-full bg-[#c9ff3b]/[0.04]" />
 
                     <div className="relative">
                       <div className="mb-5 flex items-center justify-between">
-                        <div className="grid h-11 w-11 place-items-center rounded-2xl border border-[#d8ff73]/15 bg-[#d8ff73]/10 text-[#d8ff73]">
+                        <div className="grid h-11 w-11 place-items-center rounded-2xl border border-[#c9ff3b]/15 bg-[#c9ff3b]/10 text-[#c9ff3b]">
                           <Icon size={20} />
                         </div>
 
@@ -530,7 +530,7 @@ function Projects() {
       <section className="px-5 py-16 lg:px-8 lg:py-24">
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[0.72fr_1.28fr]">
           <Reveal>
-            <div className="rounded-[1.7rem] border border-[#d8ff73]/18 bg-[#0d130d]/68 p-6 md:p-8">
+            <div className="rounded-[1.7rem] border border-[#c9ff3b]/18 bg-[#0d130d]/68 p-6 md:p-8">
               <Label tone="amber">Project checklist</Label>
 
               <h2 className="text-balance text-[26px] font-black leading-tight tracking-[-0.035em] text-white md:text-[34px]">
@@ -549,7 +549,7 @@ function Projects() {
             {proofPoints.map((item, index) => (
               <Reveal key={item} delay={index * 0.03}>
                 <div className="flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-[#070907]/54 px-4 py-3.5">
-                  <CheckCircle2 size={17} className="shrink-0 text-[#d8ff73]" />
+                  <CheckCircle2 size={17} className="shrink-0 text-[#c9ff3b]" />
                   <span className="text-sm font-semibold text-[#c3cbbd]">
                     {item}
                   </span>
@@ -563,11 +563,11 @@ function Projects() {
       <section className="px-5 py-16 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-6xl">
           <div className="relative overflow-hidden rounded-[1.8rem] border border-white/[0.08] bg-[#0d130d]/68 p-6 md:p-8">
-            <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#d8ff73]/10 blur-3xl" />
+            <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[#c9ff3b]/10 blur-3xl" />
 
             <div className="relative flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
               <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#d8ff73]">
+                <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#c9ff3b]">
                   Start your project
                 </p>
 

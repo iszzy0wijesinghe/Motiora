@@ -25,7 +25,7 @@ import {
 } from "motion/react";
 import { Link } from "react-router";
 import { featuredProjects, featuredTools } from "../data/site";
-import motioraLogo from "../assets/motioralogo.webp";
+import BrandLogo from "../components/layout/BrandLogo";
 
 const buildFlow = [
   {
@@ -168,12 +168,12 @@ function Label({
   return (
     <div
       className={`mb-4 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.22em] ${
-        tone === "lime" ? "text-[#d8ff73]" : "text-[#f6c85f]"
+        tone === "lime" ? "text-[#c9ff3b]" : "text-[#f6c85f]"
       }`}
     >
       <span
         className={`h-1.5 w-1.5 rounded-full ${
-          tone === "lime" ? "bg-[#d8ff73]" : "bg-[#f6c85f]"
+          tone === "lime" ? "bg-[#c9ff3b]" : "bg-[#f6c85f]"
         }`}
       />
       {children}
@@ -226,7 +226,7 @@ function ForgeField() {
       animate={{ opacity: 1, y: 0, rotateX: 0 }}
       transition={{ duration: 0.55, ease: "easeOut" }}
     >
-      <div className="absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#d8ff73]/8 blur-2xl" />
+      <div className="absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c9ff3b]/8 blur-2xl" />
       <div className="absolute right-8 top-12 h-44 w-44 rounded-full bg-[#f6c85f]/8 blur-2xl" />
 
       <svg
@@ -237,8 +237,8 @@ function ForgeField() {
       >
         <defs>
           <linearGradient id="forgeOrbit" x1="70" y1="75" x2="490" y2="395">
-            <stop stopColor="#D8FF73" />
-            <stop offset="0.55" stopColor="#8AFF80" />
+            <stop stopColor="#c9ff3b" />
+            <stop offset="0.55" stopColor="#c9ff3b" />
             <stop offset="1" stopColor="#F6C85F" />
           </linearGradient>
         </defs>
@@ -261,7 +261,7 @@ function ForgeField() {
           cy="235"
           rx="175"
           ry="118"
-          stroke="rgba(216,255,115,0.16)"
+          stroke="rgba(201,255,59,0.16)"
           strokeWidth="1"
           strokeDasharray="8 14"
           opacity="0.42"
@@ -278,7 +278,7 @@ function ForgeField() {
           opacity="0.36"
         />
 
-        <circle cx="280" cy="235" r="155" fill="rgba(216,255,115,0.035)" />
+        <circle cx="280" cy="235" r="155" fill="rgba(201,255,59,0.035)" />
       </svg>
 
       <motion.div
@@ -286,20 +286,23 @@ function ForgeField() {
         animate={allowMotion ? { y: [0, -7, 0] } : undefined}
         transition={{ duration: 6.2, repeat: Infinity, ease: "easeInOut" }}
       >
-        <div className="absolute inset-0 rounded-full border border-[#d8ff73]/20 bg-[#d8ff73]/8" />
+        <div className="absolute inset-0 rounded-full border border-[#c9ff3b]/20 bg-[#c9ff3b]/8" />
 
-        <div className="relative grid h-full w-full place-items-center rounded-full border border-white/10 bg-[#0d130d]/70 shadow-[0_0_58px_rgba(216,255,115,0.12)] backdrop-blur-md">
+        <div className="relative grid h-full w-full place-items-center rounded-full border border-white/10 bg-[#0d130d]/70 shadow-[0_0_58px_rgba(201,255,59,0.12)] backdrop-blur-md">
           <div className="absolute inset-4 rounded-full border border-white/[0.06]" />
-          <div className="absolute inset-8 rounded-full border border-[#d8ff73]/10" />
+          <div className="absolute inset-8 rounded-full border border-[#c9ff3b]/10" />
 
           <div className="text-center">
-            <div className="mx-auto grid h-[52px] w-[52px] place-items-center rounded-full border border-[#d8ff73]/20 bg-[#d8ff73]/10 text-[#d8ff73]">
+            <div className="mx-auto grid h-[52px] w-[52px] place-items-center rounded-full border border-[#c9ff3b]/20 bg-[#c9ff3b]/10 text-[#c9ff3b]">
               <WandSparkles size={24} />
             </div>
 
-            <p className="mt-4 text-[13px] font-black uppercase tracking-[0.24em] text-white">
-              Motiora
-            </p>
+            <BrandLogo
+              variant="long"
+              appearance="light"
+              alt="Motiora"
+              className="mt-4 h-auto w-[92px] object-contain"
+            />
             <p className="mt-1 text-[9px] font-black uppercase tracking-[0.18em] text-[#8d9a87]">
               software core
             </p>
@@ -316,7 +319,7 @@ function ForgeField() {
             className="absolute z-30 flex flex-col items-center gap-2 text-center"
             style={{ left: node.x, top: node.y }}
           >
-            <span className="grid h-11 w-11 place-items-center rounded-full border border-[#d8ff73]/20 bg-[#0d130d]/70 text-[#d8ff73] backdrop-blur-md">
+            <span className="grid h-11 w-11 place-items-center rounded-full border border-[#c9ff3b]/20 bg-[#0d130d]/70 text-[#c9ff3b] backdrop-blur-md">
               <Icon size={18} />
             </span>
 
@@ -329,15 +332,15 @@ function ForgeField() {
 
       <div className="absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 items-center gap-3 text-[10px] font-black uppercase tracking-[0.16em] text-[#7d897b]">
         <span className="flex items-center gap-1.5">
-          <ShieldCheck size={12} className="text-[#d8ff73]" />
+          <ShieldCheck size={12} className="text-[#c9ff3b]" />
           Secure
         </span>
         <span className="flex items-center gap-1.5">
-          <Orbit size={12} className="text-[#d8ff73]" />
+          <Orbit size={12} className="text-[#c9ff3b]" />
           Scalable
         </span>
         <span className="flex items-center gap-1.5">
-          <Zap size={12} className="text-[#d8ff73]" />
+          <Zap size={12} className="text-[#c9ff3b]" />
           Fast
         </span>
       </div>
@@ -382,7 +385,7 @@ function ScrollForge() {
 
             <div className="mt-6 grid gap-2 text-[11px] font-black uppercase tracking-[0.16em] text-[#7d897b]">
               <span className="flex items-center gap-2">
-                <CircleDot size={13} className="text-[#d8ff73]" />
+                <CircleDot size={13} className="text-[#c9ff3b]" />
                 Business-first scope
               </span>
               <span className="flex items-center gap-2">
@@ -390,7 +393,7 @@ function ScrollForge() {
                 Clean product structure
               </span>
               <span className="flex items-center gap-2">
-                <CircleDot size={13} className="text-[#8aff80]" />
+                <CircleDot size={13} className="text-[#c9ff3b]" />
                 Launch-ready engineering
               </span>
             </div>
@@ -413,9 +416,9 @@ function ScrollForge() {
             animate={allowMotion ? { rotate: 360 } : undefined}
             transition={{ duration: 72, repeat: Infinity, ease: "linear" }}
           >
-            <div className="absolute left-1/2 top-1/2 h-[480px] w-[480px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d8ff73]/10" />
+            <div className="absolute left-1/2 top-1/2 h-[480px] w-[480px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#c9ff3b]/10" />
             <div className="absolute left-1/2 top-1/2 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#f6c85f]/10" />
-            <div className="absolute left-1/2 top-1/2 h-[210px] w-[210px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#8aff80]/10" />
+            <div className="absolute left-1/2 top-1/2 h-[210px] w-[210px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#c9ff3b]/10" />
           </motion.div>
 
           <svg
@@ -432,14 +435,14 @@ function ScrollForge() {
                 x2="700"
                 y2="420"
               >
-                <stop stopColor="#D8FF73" stopOpacity="0.98" />
-                <stop offset="0.5" stopColor="#8AFF80" stopOpacity="0.8" />
+                <stop stopColor="#c9ff3b" stopOpacity="0.98" />
+                <stop offset="0.5" stopColor="#c9ff3b" stopOpacity="0.8" />
                 <stop offset="1" stopColor="#F6C85F" stopOpacity="0.9" />
               </linearGradient>
 
               <radialGradient id="motioraBuildCore" cx="50%" cy="50%" r="50%">
-                <stop stopColor="#D8FF73" stopOpacity="0.14" />
-                <stop offset="1" stopColor="#D8FF73" stopOpacity="0" />
+                <stop stopColor="#c9ff3b" stopOpacity="0.14" />
+                <stop offset="1" stopColor="#c9ff3b" stopOpacity="0" />
               </radialGradient>
             </defs>
 
@@ -484,7 +487,7 @@ function ScrollForge() {
               cy="270"
               rx="180"
               ry="92"
-              stroke="rgba(216,255,115,0.15)"
+              stroke="rgba(201,255,59,0.15)"
               strokeWidth="1.05"
               strokeDasharray="7 14"
             />
@@ -503,7 +506,7 @@ function ScrollForge() {
               <>
                 <motion.circle
                   r="5"
-                  fill="#D8FF73"
+                  fill="#c9ff3b"
                   animate={{
                     cx: [120, 410, 700, 410, 120],
                     cy: [270, 116, 270, 424, 270],
@@ -532,7 +535,7 @@ function ScrollForge() {
             )}
           </svg>
 
-          <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 hidden h-28 w-28 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-[#d8ff73]/20 bg-[#0d130d]/84 text-center text-[#d8ff73] shadow-[0_0_64px_rgba(216,255,115,0.1)] md:grid">
+          <div className="pointer-events-none absolute left-1/2 top-1/2 z-10 hidden h-28 w-28 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-[#c9ff3b]/20 bg-[#0d130d]/84 text-center text-[#c9ff3b] shadow-[0_0_64px_rgba(201,255,59,0.1)] md:grid">
             <div className="absolute inset-4 rounded-full border border-white/[0.06]" />
             <Sparkles size={28} />
           </div>
@@ -544,7 +547,7 @@ function ScrollForge() {
               return (
                 <motion.article
                   key={item.title}
-                  className="relative min-h-[206px] overflow-hidden rounded-[1.45rem] border border-[#f6f8ef]/[0.085] bg-[#070907]/88 p-4 backdrop-blur-md transition hover:border-[#d8ff73]/30 hover:bg-[#d8ff73]/[0.045]"
+                  className="relative min-h-[206px] overflow-hidden rounded-[1.45rem] border border-[#f6f8ef]/[0.085] bg-[#070907]/88 p-4 backdrop-blur-md transition hover:border-[#c9ff3b]/30 hover:bg-[#c9ff3b]/[0.045]"
                   initial={{ opacity: 0, y: 18, scale: 0.97 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
                   viewport={{ once: true, amount: 0.28 }}
@@ -562,11 +565,11 @@ function ScrollForge() {
                       : undefined
                   }
                 >
-                  <div className="absolute -right-12 -top-12 h-28 w-28 rounded-full bg-[#d8ff73]/[0.045]" />
+                  <div className="absolute -right-12 -top-12 h-28 w-28 rounded-full bg-[#c9ff3b]/[0.045]" />
 
                   <div className="relative">
                     <div className="mb-4 flex items-center justify-between gap-3">
-                      <div className="grid h-10 w-10 place-items-center rounded-2xl border border-[#d8ff73]/15 bg-[#0d130d]/72 text-[#d8ff73]">
+                      <div className="grid h-10 w-10 place-items-center rounded-2xl border border-[#c9ff3b]/15 bg-[#0d130d]/72 text-[#c9ff3b]">
                         <Icon size={19} />
                       </div>
 
@@ -583,8 +586,8 @@ function ScrollForge() {
                       {item.description}
                     </p>
 
-                    <div className="mt-4 rounded-2xl border border-[#d8ff73]/10 bg-[#d8ff73]/[0.045] px-3 py-2">
-                      <p className="text-[10px] font-black uppercase tracking-[0.14em] text-[#d8ff73]">
+                    <div className="mt-4 rounded-2xl border border-[#c9ff3b]/10 bg-[#c9ff3b]/[0.045] px-3 py-2">
+                      <p className="text-[10px] font-black uppercase tracking-[0.14em] text-[#c9ff3b]">
                         {item.output}
                       </p>
                     </div>
@@ -641,8 +644,8 @@ function CapabilityOrbit() {
                   x2="1010"
                   y2="585"
                 >
-                  <stop stopColor="#D8FF73" stopOpacity="0.92" />
-                  <stop offset="0.5" stopColor="#8AFF80" stopOpacity="0.68" />
+                  <stop stopColor="#c9ff3b" stopOpacity="0.92" />
+                  <stop offset="0.5" stopColor="#c9ff3b" stopOpacity="0.68" />
                   <stop offset="1" stopColor="#F6C85F" stopOpacity="0.86" />
                 </linearGradient>
 
@@ -654,13 +657,13 @@ function CapabilityOrbit() {
                   y2="500"
                 >
                   <stop stopColor="#F6C85F" stopOpacity="0.66" />
-                  <stop offset="1" stopColor="#D8FF73" stopOpacity="0.62" />
+                  <stop offset="1" stopColor="#c9ff3b" stopOpacity="0.62" />
                 </linearGradient>
               </defs>
 
               <path
                 d={mainOrbitPath}
-                stroke="rgba(216,255,115,0.18)"
+                stroke="rgba(201,255,59,0.18)"
                 strokeWidth="1.35"
                 strokeDasharray="10 18"
                 vectorEffect="non-scaling-stroke"
@@ -714,7 +717,7 @@ function CapabilityOrbit() {
 
               {allowMotion && (
                 <>
-                  <circle r="4.8" fill="#D8FF73">
+                  <circle r="4.8" fill="#c9ff3b">
                     <animateMotion
                       dur="22s"
                       repeatCount="indefinite"
@@ -753,7 +756,7 @@ function CapabilityOrbit() {
                     transition={{ duration: 0.22, ease: "easeOut" }}
                   >
                     <div className="absolute -right-16 -top-16 h-32 w-32 rounded-full bg-[#f6c85f]/[0.035]" />
-                    <div className="absolute -bottom-16 left-8 h-28 w-28 rounded-full bg-[#d8ff73]/[0.028]" />
+                    <div className="absolute -bottom-16 left-8 h-28 w-28 rounded-full bg-[#c9ff3b]/[0.028]" />
 
                     <div className="relative">
                       <div className="mb-5 flex items-center justify-between gap-3">
@@ -761,7 +764,7 @@ function CapabilityOrbit() {
                           <Icon size={20} />
                         </div>
 
-                        <span className="rounded-full border border-[#d8ff73]/12 bg-[#d8ff73]/[0.055] px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-[#d8ff73]">
+                        <span className="rounded-full border border-[#c9ff3b]/12 bg-[#c9ff3b]/[0.055] px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.14em] text-[#c9ff3b]">
                           {item.signal}
                         </span>
                       </div>
@@ -774,7 +777,7 @@ function CapabilityOrbit() {
                         {item.description}
                       </p>
 
-                      <div className="mt-6 h-px w-full bg-gradient-to-r from-[#f6c85f]/35 via-[#d8ff73]/18 to-transparent" />
+                      <div className="mt-6 h-px w-full bg-gradient-to-r from-[#f6c85f]/35 via-[#c9ff3b]/18 to-transparent" />
 
                       <p className="mt-4 text-[10px] font-black uppercase tracking-[0.16em] text-[#64705f]">
                         Motiora software scope · 0{index + 1}
@@ -839,9 +842,11 @@ function Home() {
               textAnchor="middle"
               dominantBaseline="middle"
               fontSize="210"
+              fontFamily="HatoriFatLocal"
+              fontWeight="400"
               className="motiora-svg-base-word"
             >
-              Motiora
+              MOTIORA
             </text>
 
             {[
@@ -860,11 +865,17 @@ function Home() {
                 textAnchor="middle"
                 dominantBaseline="middle"
                 fontSize="210"
+                fontFamily="HatoriFatLocal"
+                fontWeight="400"
                 className="motiora-svg-route-word"
                 clipPath={`url(#${item.clipId})`}
-                style={{ animationDelay: item.delay }}
+                style={{
+                  animationDelay: item.delay,
+                  fontFamily: '"HatoriFatLocal", Impact, sans-serif',
+                  fontWeight: 400,
+                }}
               >
-                Motiora
+                MOTIORA
               </text>
             ))}
           </svg>
@@ -877,22 +888,16 @@ function Home() {
             transition={{ duration: 0.55, ease: "easeOut" }}
             className="max-w-2xl"
           >
-            <div className="mb-5 hidden items-center gap-3 sm:flex">
-              <img
-                src={motioraLogo}
-                alt="Motiora"
-                className="h-12 w-12 object-contain sm:h-14 sm:w-14"
-                draggable={false}
+            <div className="mb-6 hidden flex-col items-start gap-2.5 sm:flex">
+              <BrandLogo
+                variant="long"
+                appearance="light"
+                className="h-auto w-[210px] object-contain sm:w-[235px]"
               />
 
-              <div>
-                <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#d8ff73]">
-                  Software Studio
-                </p>
-                <p className="mt-1 text-xs font-bold tracking-[0.02em] text-[#8d9a87]">
-                  Digital systems · Web platforms · Automation tools
-                </p>
-              </div>
+              <p className="text-[10px] font-black uppercase tracking-[0.17em] text-[#8d9a87]">
+                Digital systems · Web platforms · Automation tools
+              </p>
             </div>
 
             <h1 className="text-balance max-w-2xl text-[33px] font-black leading-[1.05] tracking-[-0.045em] text-white sm:text-[42px] lg:text-[48px]">
@@ -920,7 +925,7 @@ function Home() {
 
               <Link
                 to="/projects"
-                className="forge-ghost inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold text-[#dce5d8] transition hover:-translate-y-0.5 hover:text-[#d8ff73]"
+                className="forge-ghost inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold text-[#dce5d8] transition hover:-translate-y-0.5 hover:text-[#c9ff3b]"
               >
                 View work
                 <MoveRight size={16} />
@@ -931,7 +936,7 @@ function Home() {
               {["Business systems", "Web platforms", "Automation tools"].map(
                 (item) => (
                   <span key={item} className="flex items-center gap-2">
-                    <CircleDot size={13} className="text-[#d8ff73]" />
+                    <CircleDot size={13} className="text-[#c9ff3b]" />
                     {item}
                   </span>
                 ),
@@ -965,9 +970,9 @@ function Home() {
 
               return (
                 <Reveal key={step.title} delay={index * 0.04}>
-                  <div className="min-h-[188px] rounded-[1.35rem] border border-white/[0.07] bg-white/[0.022] p-4 transition hover:border-[#d8ff73]/25 hover:bg-[#d8ff73]/[0.04]">
+                  <div className="min-h-[188px] rounded-[1.35rem] border border-white/[0.07] bg-white/[0.022] p-4 transition hover:border-[#c9ff3b]/25 hover:bg-[#c9ff3b]/[0.04]">
                     <div className="mb-6 flex items-center justify-between">
-                      <div className="grid h-10 w-10 place-items-center rounded-2xl bg-[#d8ff73]/10 text-[#d8ff73]">
+                      <div className="grid h-10 w-10 place-items-center rounded-2xl bg-[#c9ff3b]/10 text-[#c9ff3b]">
                         <Icon size={19} />
                       </div>
 
@@ -1006,7 +1011,7 @@ function Home() {
 
                 <Link
                   to="/projects"
-                  className="forge-ghost hidden items-center gap-2 rounded-full px-4 py-2.5 text-sm font-bold text-white transition hover:text-[#d8ff73] sm:inline-flex"
+                  className="forge-ghost hidden items-center gap-2 rounded-full px-4 py-2.5 text-sm font-bold text-white transition hover:text-[#c9ff3b] sm:inline-flex"
                 >
                   See work
                   <ArrowRight size={15} />
@@ -1019,7 +1024,7 @@ function Home() {
                     key={project.title}
                     className="grid gap-3 py-4 sm:grid-cols-[36px_1fr_auto]"
                   >
-                    <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#d8ff73]/10 text-[#d8ff73]">
+                    <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#c9ff3b]/10 text-[#c9ff3b]">
                       <FileCode2 size={17} />
                     </div>
 
@@ -1059,7 +1064,7 @@ function Home() {
                 {featuredTools.map((tool) => (
                   <span
                     key={tool}
-                    className="rounded-full border border-white/10 bg-white/[0.032] px-3.5 py-2 text-[11px] font-black uppercase tracking-[0.12em] text-[#c3cbbd] transition hover:border-[#d8ff73]/30 hover:bg-[#d8ff73]/[0.08] hover:text-[#d8ff73]"
+                    className="rounded-full border border-white/10 bg-white/[0.032] px-3.5 py-2 text-[11px] font-black uppercase tracking-[0.12em] text-[#c3cbbd] transition hover:border-[#c9ff3b]/30 hover:bg-[#c9ff3b]/[0.08] hover:text-[#c9ff3b]"
                   >
                     {tool}
                   </span>
@@ -1068,7 +1073,7 @@ function Home() {
 
               <Link
                 to="/tools"
-                className="forge-ghost mt-6 inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-bold text-white transition hover:text-[#d8ff73]"
+                className="forge-ghost mt-6 inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-bold text-white transition hover:text-[#c9ff3b]"
               >
                 Open tools
                 <ArrowRight size={15} />
@@ -1079,10 +1084,10 @@ function Home() {
       </section>
 
       <section className="px-5 py-16 lg:px-8 lg:py-24">
-        <div className="mx-auto max-w-6xl rounded-[1.8rem] border border-[#d8ff73]/18 bg-[#0d130d]/68 p-6 md:p-8">
+        <div className="mx-auto max-w-6xl rounded-[1.8rem] border border-[#c9ff3b]/18 bg-[#0d130d]/68 p-6 md:p-8">
           <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
             <Reveal>
-              <div className="mb-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.24em] text-[#d8ff73]">
+              <div className="mb-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.24em] text-[#c9ff3b]">
                 <Sparkles size={14} />
                 Engineering standard
               </div>
@@ -1098,7 +1103,7 @@ function Home() {
                   <div className="flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-[#070907]/42 px-4 py-3.5">
                     <CheckCircle2
                       size={17}
-                      className="shrink-0 text-[#d8ff73]"
+                      className="shrink-0 text-[#c9ff3b]"
                     />
                     <span className="text-sm font-semibold text-[#c3cbbd]">
                       {item}
@@ -1115,7 +1120,7 @@ function Home() {
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col items-start justify-between gap-6 border-y border-white/[0.08] py-10 md:flex-row md:items-center">
             <div>
-              <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#d8ff73]">
+              <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#c9ff3b]">
                 Start with Motiora
               </p>
 

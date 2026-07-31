@@ -1,30 +1,25 @@
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
 import { navItems } from "../../data/site";
-import motioraLogo from "../../assets/motioralogo.webp";
+import BrandLogo from "./BrandLogo";
 
 function Footer() {
   return (
     <footer className="border-t border-[#f6f8ef]/[0.08] bg-[#070907]/75 lg:pl-[86px]">
       <div className="mx-auto grid max-w-6xl gap-8 px-5 py-10 md:grid-cols-[1fr_auto] lg:px-8">
         <div>
-          <Link to="/" className="inline-flex items-center gap-3">
-            <img
-              src={motioraLogo}
-              alt="Motiora"
-              className="h-12 w-12 object-contain"
-              draggable={false}
+          <Link
+            to="/"
+            className="group inline-flex items-center"
+            aria-label="Motiora home"
+          >
+            <BrandLogo
+              variant="long"
+              appearance="light"
+              className="h-auto w-[190px] object-contain transition duration-300 group-hover:scale-[1.015] sm:w-[215px]"
             />
-
-            <div>
-              <p className="text-lg font-black tracking-[-0.04em] text-white">
-                Motiora
-              </p>
-              <p className="mt-1 text-[10px] font-black uppercase tracking-[0.22em] text-[#d8ff73]/70">
-                Software Studio
-              </p>
-            </div>
           </Link>
+
           <p className="mt-4 max-w-lg text-sm leading-7 text-[#8d9a87]">
             A software company building client systems, business platforms,
             public tools, and future-ready digital products.
@@ -34,9 +29,10 @@ function Footer() {
         <div className="grid gap-3 sm:grid-cols-2 md:text-right">
           <Link
             to="/"
-            className="group inline-flex items-center gap-2 text-sm font-bold text-[#8d9a87] transition hover:text-[#d8ff73] md:justify-end"
+            className="group inline-flex items-center gap-2 text-sm font-bold text-[#8d9a87] transition hover:text-[#c9ff3b] md:justify-end"
           >
             Home
+
             <ArrowUpRight
               size={13}
               className="opacity-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
@@ -49,9 +45,10 @@ function Footer() {
               <Link
                 key={item.href}
                 to={item.href}
-                className="group inline-flex items-center gap-2 text-sm font-bold text-[#8d9a87] transition hover:text-[#d8ff73] md:justify-end"
+                className="group inline-flex items-center gap-2 text-sm font-bold text-[#8d9a87] transition hover:text-[#c9ff3b] md:justify-end"
               >
                 {item.label}
+
                 <ArrowUpRight
                   size={13}
                   className="opacity-0 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"

@@ -56,14 +56,14 @@ function GalaxyPortal() {
       transition={{ duration: 1.28, ease: "easeOut" }}
     >
       <motion.div
-        className="absolute left-1/2 top-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#d8ff73]/[0.12] blur-2xl"
+        className="absolute left-1/2 top-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c9ff3b]/[0.12] blur-2xl"
         initial={{ scale: 0.28, opacity: 0.2 }}
         animate={{ scale: 1.55, opacity: [0.18, 0.42, 0] }}
         transition={{ duration: 1.22, ease: "easeOut" }}
       />
 
       <motion.div
-        className="absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d8ff73]/45 shadow-[0_0_70px_rgba(216,255,115,0.18)]"
+        className="absolute left-1/2 top-1/2 h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#c9ff3b]/45 shadow-[0_0_70px_rgba(201,255,59,0.18)]"
         initial={{ scale: 0.2, rotate: -44, opacity: 0 }}
         animate={{ scale: 1.42, rotate: 70, opacity: [0, 0.86, 0] }}
         transition={{ duration: 1.18, ease: "easeOut" }}
@@ -77,7 +77,7 @@ function GalaxyPortal() {
       />
 
       <motion.div
-        className="absolute left-1/2 top-1/2 h-[250px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-[999px] border border-[#d8ff73]/18"
+        className="absolute left-1/2 top-1/2 h-[250px] w-[760px] -translate-x-1/2 -translate-y-1/2 rounded-[999px] border border-[#c9ff3b]/18"
         initial={{ scale: 0.18, rotate: -22, opacity: 0 }}
         animate={{ scale: 1.18, rotate: 18, opacity: [0, 0.72, 0] }}
         transition={{ duration: 1.15, ease: "easeOut", delay: 0.04 }}
@@ -91,21 +91,21 @@ function GalaxyPortal() {
       />
 
       <motion.div
-        className="absolute left-1/2 top-1/2 h-px w-[72vw] max-w-[980px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-transparent via-[#d8ff73]/70 to-transparent shadow-[0_0_18px_rgba(216,255,115,0.42)]"
+        className="absolute left-1/2 top-1/2 h-px w-[72vw] max-w-[980px] -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-transparent via-[#c9ff3b]/70 to-transparent shadow-[0_0_18px_rgba(201,255,59,0.42)]"
         initial={{ scaleX: 0, opacity: 0, rotate: -18 }}
         animate={{ scaleX: [0, 1.15, 0.72], opacity: [0, 0.85, 0], rotate: 16 }}
         transition={{ duration: 1.02, ease: "easeOut", delay: 0.08 }}
       />
 
       <motion.div
-        className="absolute left-1/2 top-1/2 h-[130px] w-[130px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#d8ff73]/35 bg-[#d8ff73]/10 shadow-[0_0_58px_rgba(216,255,115,0.22)]"
+        className="absolute left-1/2 top-1/2 h-[130px] w-[130px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#c9ff3b]/35 bg-[#c9ff3b]/10 shadow-[0_0_58px_rgba(201,255,59,0.22)]"
         initial={{ scale: 0.1, opacity: 0 }}
         animate={{ scale: [0.1, 1.2, 0.3], opacity: [0, 0.78, 0] }}
         transition={{ duration: 0.9, ease: "easeOut", delay: 0.02 }}
       />
 
       <motion.span
-        className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#d8ff73] shadow-[0_0_20px_rgba(216,255,115,0.9)]"
+        className="absolute left-1/2 top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c9ff3b] shadow-[0_0_20px_rgba(201,255,59,0.9)]"
         initial={{ opacity: 0, x: -260, y: -45, scale: 0.4 }}
         animate={{
           opacity: [0, 1, 0],
@@ -131,7 +131,7 @@ function GalaxyPortal() {
       {orbitStars.map((star, index) => (
         <motion.span
           key={`${star.x}-${star.y}-${index}`}
-          className="absolute rounded-full bg-[#d8ff73] shadow-[0_0_14px_rgba(216,255,115,0.75)]"
+          className="absolute rounded-full bg-[#c9ff3b] shadow-[0_0_14px_rgba(201,255,59,0.75)]"
           style={{
             left: star.x,
             top: star.y,

@@ -15,7 +15,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useMemo, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router";
 import { navItems } from "../../data/site";
-import motioraLogo from "../../assets/motioralogo.webp";
+import BrandLogo from "./BrandLogo";
 
 const navIconByHref: Record<string, LucideIcon> = {
   "/projects": FolderKanban,
@@ -31,11 +31,10 @@ function Mark() {
       className="group grid h-11 w-11 place-items-center"
       aria-label="Go to Motiora home"
     >
-      <img
-        src={motioraLogo}
-        alt="Motiora"
-        className="h-10 w-10 object-contain transition duration-300 group-hover:scale-105"
-        draggable={false}
+      <BrandLogo
+        variant="short"
+        appearance="light"
+        className="h-9 w-9 object-contain transition duration-300 group-hover:scale-105"
       />
     </Link>
   );
@@ -119,7 +118,7 @@ function Navbar() {
             {location.pathname === "/" && (
               <motion.span
                 layoutId="forge-rail-active"
-                className="absolute inset-0 rounded-full bg-[#d8ff73]"
+                className="absolute inset-0 rounded-full bg-[#c9ff3b]"
                 transition={{ type: "spring", stiffness: 430, damping: 34 }}
               />
             )}
@@ -128,7 +127,7 @@ function Navbar() {
               className={`relative z-10 grid h-full w-full place-items-center rounded-full ${
                 location.pathname === "/"
                   ? "text-[#101408]"
-                  : "bg-white/[0.035] text-[#8d9a87] group-hover:bg-[#d8ff73]/10 group-hover:text-[#d8ff73]"
+                  : "bg-white/[0.035] text-[#8d9a87] group-hover:bg-[#c9ff3b]/10 group-hover:text-[#c9ff3b]"
               }`}
               whileHover={{ scale: 1.08, rotate: -4 }}
               whileTap={{ scale: 0.94 }}
@@ -153,7 +152,7 @@ function Navbar() {
                 {active && (
                   <motion.span
                     layoutId="forge-rail-active"
-                    className="absolute inset-0 rounded-full bg-[#d8ff73]"
+                    className="absolute inset-0 rounded-full bg-[#c9ff3b]"
                     transition={{ type: "spring", stiffness: 430, damping: 34 }}
                   />
                 )}
@@ -162,7 +161,7 @@ function Navbar() {
                   className={`relative z-10 grid h-full w-full place-items-center rounded-full ${
                     active
                       ? "text-[#101408]"
-                      : "bg-white/[0.035] text-[#8d9a87] group-hover:bg-[#d8ff73]/10 group-hover:text-[#d8ff73]"
+                      : "bg-white/[0.035] text-[#8d9a87] group-hover:bg-[#c9ff3b]/10 group-hover:text-[#c9ff3b]"
                   }`}
                   whileHover={{ scale: 1.08, rotate: -4 }}
                   whileTap={{ scale: 0.94 }}
@@ -195,18 +194,17 @@ function Navbar() {
               : "border border-[#f6f8ef]/[0.07] bg-[#070907]/58 shadow-[0_12px_36px_rgba(0,0,0,0.22)] backdrop-blur-xl"
           }`}
         >
-          <div className="flex items-center gap-2.5">
-            <Mark />
-
-            <div className="leading-none">
-              <span className="block text-sm font-black tracking-[-0.04em] text-white">
-                Motiora
-              </span>
-              <span className="mt-1 block text-[9px] font-black uppercase tracking-[0.18em] text-[#d8ff73]/70">
-                Software Studio
-              </span>
-            </div>
-          </div>
+          <Link
+            to="/"
+            className="group inline-flex items-center"
+            aria-label="Go to Motiora home"
+          >
+            <BrandLogo
+              variant="long"
+              appearance="light"
+              className="h-[27px] w-auto max-w-[150px] object-contain transition duration-300 group-hover:scale-[1.02]"
+            />
+          </Link>
 
           <button
             type="button"
@@ -230,7 +228,7 @@ function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.16, ease: "easeOut" }}
           >
-            <div className="pointer-events-none absolute left-[-18%] top-[10%] h-52 w-52 rounded-full bg-[#d8ff73]/8 blur-3xl" />
+            <div className="pointer-events-none absolute left-[-18%] top-[10%] h-52 w-52 rounded-full bg-[#c9ff3b]/8 blur-3xl" />
             <div className="pointer-events-none absolute bottom-[-12%] right-[-18%] h-56 w-56 rounded-full bg-[#f6c85f]/8 blur-3xl" />
 
             <motion.div
@@ -241,7 +239,7 @@ function Navbar() {
               transition={{ duration: 0.18, ease: "easeOut" }}
             >
               <div className="rounded-[1.35rem] border border-white/10 bg-white/[0.035] p-3 shadow-xl shadow-black/30">
-                <div className="inline-flex items-center gap-2 rounded-full border border-[#d8ff73]/18 bg-[#d8ff73]/8 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.18em] text-[#d8ff73]">
+                <div className="inline-flex items-center gap-2 rounded-full border border-[#c9ff3b]/18 bg-[#c9ff3b]/8 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.18em] text-[#c9ff3b]">
                   <Sparkles size={11} />
                   Navigation
                 </div>
@@ -263,7 +261,7 @@ function Navbar() {
                   }
                   className={`group flex items-center justify-between rounded-[1.05rem] border px-3.5 py-3 transition active:scale-[0.99] ${
                     location.pathname === "/"
-                      ? "border-[#d8ff73]/70 bg-[#d8ff73] text-[#11160b]"
+                      ? "border-[#c9ff3b]/70 bg-[#c9ff3b] text-[#11160b]"
                       : "border-white/10 bg-white/[0.04] text-white"
                   }`}
                 >
@@ -272,7 +270,7 @@ function Navbar() {
                       className={`grid h-9 w-9 place-items-center rounded-full ${
                         location.pathname === "/"
                           ? "bg-[#11160b]/10 text-[#11160b]"
-                          : "bg-white/[0.055] text-[#d8ff73]"
+                          : "bg-white/[0.055] text-[#c9ff3b]"
                       }`}
                     >
                       <Home size={17} />
@@ -305,7 +303,7 @@ function Navbar() {
                     className={
                       location.pathname === "/"
                         ? "text-[#11160b]/70"
-                        : "text-[#d8ff73]"
+                        : "text-[#c9ff3b]"
                     }
                   />
                 </Link>
@@ -321,7 +319,7 @@ function Navbar() {
                       onClick={(event) => handleMobileLinkClick(event, active)}
                       className={`group flex items-center justify-between rounded-[1.05rem] border px-3.5 py-3 transition active:scale-[0.99] ${
                         active
-                          ? "border-[#d8ff73]/70 bg-[#d8ff73] text-[#11160b]"
+                          ? "border-[#c9ff3b]/70 bg-[#c9ff3b] text-[#11160b]"
                           : "border-white/10 bg-white/[0.04] text-white"
                       }`}
                     >
@@ -330,7 +328,7 @@ function Navbar() {
                           className={`grid h-9 w-9 place-items-center rounded-full ${
                             active
                               ? "bg-[#11160b]/10 text-[#11160b]"
-                              : "bg-white/[0.055] text-[#d8ff73]"
+                              : "bg-white/[0.055] text-[#c9ff3b]"
                           }`}
                         >
                           <Icon size={17} />
@@ -357,7 +355,7 @@ function Navbar() {
                       <ArrowUpRight
                         size={16}
                         className={
-                          active ? "text-[#11160b]/70" : "text-[#d8ff73]"
+                          active ? "text-[#11160b]/70" : "text-[#c9ff3b]"
                         }
                       />
                     </Link>

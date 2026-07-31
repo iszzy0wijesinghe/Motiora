@@ -129,12 +129,12 @@ function Label({
   return (
     <div
       className={`mb-4 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.22em] ${
-        tone === "lime" ? "text-[#d8ff73]" : "text-[#f6c85f]"
+        tone === "lime" ? "text-[#c9ff3b]" : "text-[#f6c85f]"
       }`}
     >
       <span
         className={`h-1.5 w-1.5 rounded-full ${
-          tone === "lime" ? "bg-[#d8ff73]" : "bg-[#f6c85f]"
+          tone === "lime" ? "bg-[#c9ff3b]" : "bg-[#f6c85f]"
         }`}
       />
       {children}
@@ -164,15 +164,15 @@ function ContactOrbit() {
             x2="720"
             y2="390"
           >
-            <stop stopColor="#D8FF73" stopOpacity="0.9" />
-            <stop offset="0.55" stopColor="#8AFF80" stopOpacity="0.56" />
+            <stop stopColor="#c9ff3b" stopOpacity="0.9" />
+            <stop offset="0.55" stopColor="#c9ff3b" stopOpacity="0.56" />
             <stop offset="1" stopColor="#F6C85F" stopOpacity="0.78" />
           </linearGradient>
         </defs>
 
         <path
           d={orbitPath}
-          stroke="rgba(216,255,115,0.13)"
+          stroke="rgba(201,255,59,0.13)"
           strokeWidth="1.2"
           strokeDasharray="10 18"
           vectorEffect="non-scaling-stroke"
@@ -287,7 +287,7 @@ function Contact() {
                   href={WHATSAPP_LINK}
                   target="_blank"
                   rel="noreferrer"
-                  className="forge-ghost inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold text-[#dce5d8] transition hover:-translate-y-0.5 hover:text-[#d8ff73]"
+                  className="forge-ghost inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold text-[#dce5d8] transition hover:-translate-y-0.5 hover:text-[#c9ff3b]"
                 >
                   WhatsApp
                   <MessageCircle size={16} />
@@ -299,7 +299,7 @@ function Contact() {
               <div className="rounded-[1.8rem] border border-white/[0.08] bg-white/[0.022] p-5">
                 <div className="mb-5 flex items-center justify-between gap-4">
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#d8ff73]">
+                    <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#c9ff3b]">
                       Contact standard
                     </p>
 
@@ -308,7 +308,7 @@ function Contact() {
                     </h2>
                   </div>
 
-                  <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[#d8ff73]/14 bg-[#d8ff73]/10 text-[#d8ff73]">
+                  <div className="grid h-12 w-12 place-items-center rounded-2xl border border-[#c9ff3b]/14 bg-[#c9ff3b]/10 text-[#c9ff3b]">
                     <Sparkles size={22} />
                   </div>
                 </div>
@@ -325,7 +325,7 @@ function Contact() {
                       key={item}
                       className="rounded-[1.15rem] border border-white/[0.07] bg-[#070907]/58 p-4"
                     >
-                      <p className="text-[24px] font-black tracking-[-0.04em] text-[#d8ff73]">
+                      <p className="text-[24px] font-black tracking-[-0.04em] text-[#c9ff3b]">
                         0{index + 1}
                       </p>
 
@@ -371,7 +371,7 @@ function Contact() {
                     value={form.name}
                     onChange={(event) => updateField("name", event.target.value)}
                     placeholder="Enter your name"
-                    className="rounded-2xl border border-white/[0.08] bg-[#070907]/70 px-4 py-3 text-sm text-white outline-none transition placeholder:text-[#64705f] focus:border-[#d8ff73]/35"
+                    className="rounded-2xl border border-white/[0.08] bg-[#070907]/70 px-4 py-3 text-sm text-white outline-none transition placeholder:text-[#64705f] focus:border-[#c9ff3b]/35"
                     required
                   />
                 </label>
@@ -387,7 +387,7 @@ function Contact() {
                       updateField("email", event.target.value)
                     }
                     placeholder="you@example.com"
-                    className="rounded-2xl border border-white/[0.08] bg-[#070907]/70 px-4 py-3 text-sm text-white outline-none transition placeholder:text-[#64705f] focus:border-[#d8ff73]/35"
+                    className="rounded-2xl border border-white/[0.08] bg-[#070907]/70 px-4 py-3 text-sm text-white outline-none transition placeholder:text-[#64705f] focus:border-[#c9ff3b]/35"
                     required
                   />
                 </label>
@@ -401,7 +401,7 @@ function Contact() {
                     onChange={(event) =>
                       updateField("projectType", event.target.value)
                     }
-                    className="rounded-2xl border border-white/[0.08] bg-[#070907]/70 px-4 py-3 text-sm text-white outline-none transition focus:border-[#d8ff73]/35"
+                    className="rounded-2xl border border-white/[0.08] bg-[#070907]/70 px-4 py-3 text-sm text-white outline-none transition focus:border-[#c9ff3b]/35"
                   >
                     {inquiryTypes.map((item) => (
                       <option key={item} value={item} className="bg-[#070907]">
@@ -420,7 +420,7 @@ function Contact() {
                     onChange={(event) =>
                       updateField("budget", event.target.value)
                     }
-                    className="rounded-2xl border border-white/[0.08] bg-[#070907]/70 px-4 py-3 text-sm text-white outline-none transition focus:border-[#d8ff73]/35"
+                    className="rounded-2xl border border-white/[0.08] bg-[#070907]/70 px-4 py-3 text-sm text-white outline-none transition focus:border-[#c9ff3b]/35"
                   >
                     {budgetRanges.map((item) => (
                       <option key={item} value={item} className="bg-[#070907]">
@@ -439,7 +439,7 @@ function Contact() {
                     onChange={(event) =>
                       updateField("timeline", event.target.value)
                     }
-                    className="rounded-2xl border border-white/[0.08] bg-[#070907]/70 px-4 py-3 text-sm text-white outline-none transition focus:border-[#d8ff73]/35"
+                    className="rounded-2xl border border-white/[0.08] bg-[#070907]/70 px-4 py-3 text-sm text-white outline-none transition focus:border-[#c9ff3b]/35"
                   >
                     {timelineOptions.map((item) => (
                       <option key={item} value={item} className="bg-[#070907]">
@@ -460,7 +460,7 @@ function Contact() {
                     }
                     placeholder="Describe what you need, the problem, users, important features, and expected result..."
                     rows={7}
-                    className="resize-none rounded-2xl border border-white/[0.08] bg-[#070907]/70 px-4 py-3 text-sm leading-7 text-white outline-none transition placeholder:text-[#64705f] focus:border-[#d8ff73]/35"
+                    className="resize-none rounded-2xl border border-white/[0.08] bg-[#070907]/70 px-4 py-3 text-sm leading-7 text-white outline-none transition placeholder:text-[#64705f] focus:border-[#c9ff3b]/35"
                     required
                   />
                 </label>
@@ -485,15 +485,15 @@ function Contact() {
 
           <div className="grid gap-5">
             <Reveal delay={0.04}>
-              <div className="rounded-[1.8rem] border border-[#d8ff73]/18 bg-[#0d130d]/68 p-5 md:p-6">
+              <div className="rounded-[1.8rem] border border-[#c9ff3b]/18 bg-[#0d130d]/68 p-5 md:p-6">
                 <Label>Direct contact</Label>
 
                 <div className="grid gap-3">
                   <a
                     href={`mailto:${CONTACT_EMAIL}`}
-                    className="group flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-[#070907]/54 px-4 py-3.5 transition hover:border-[#d8ff73]/28 hover:bg-[#d8ff73]/[0.04]"
+                    className="group flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-[#070907]/54 px-4 py-3.5 transition hover:border-[#c9ff3b]/28 hover:bg-[#c9ff3b]/[0.04]"
                   >
-                    <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#d8ff73]/10 text-[#d8ff73]">
+                    <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#c9ff3b]/10 text-[#c9ff3b]">
                       <Mail size={18} />
                     </span>
 
@@ -501,7 +501,7 @@ function Contact() {
                       <span className="block text-sm font-black text-white">
                         Email
                       </span>
-                      <span className="block text-xs text-[#8d9a87] transition group-hover:text-[#d8ff73]">
+                      <span className="block text-xs text-[#8d9a87] transition group-hover:text-[#c9ff3b]">
                         {CONTACT_EMAIL}
                       </span>
                     </span>
@@ -511,9 +511,9 @@ function Contact() {
                     href={WHATSAPP_LINK}
                     target="_blank"
                     rel="noreferrer"
-                    className="group flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-[#070907]/54 px-4 py-3.5 transition hover:border-[#d8ff73]/28 hover:bg-[#d8ff73]/[0.04]"
+                    className="group flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-[#070907]/54 px-4 py-3.5 transition hover:border-[#c9ff3b]/28 hover:bg-[#c9ff3b]/[0.04]"
                   >
-                    <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#d8ff73]/10 text-[#d8ff73]">
+                    <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#c9ff3b]/10 text-[#c9ff3b]">
                       <MessageCircle size={18} />
                     </span>
 
@@ -521,7 +521,7 @@ function Contact() {
                       <span className="block text-sm font-black text-white">
                         WhatsApp
                       </span>
-                      <span className="block text-xs text-[#8d9a87] transition group-hover:text-[#d8ff73]">
+                      <span className="block text-xs text-[#8d9a87] transition group-hover:text-[#c9ff3b]">
                         Start quick discussion
                       </span>
                     </span>
@@ -529,9 +529,9 @@ function Contact() {
 
                   <a
                     href={`tel:${CONTACT_PHONE.replace(/\s/g, "")}`}
-                    className="group flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-[#070907]/54 px-4 py-3.5 transition hover:border-[#d8ff73]/28 hover:bg-[#d8ff73]/[0.04]"
+                    className="group flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-[#070907]/54 px-4 py-3.5 transition hover:border-[#c9ff3b]/28 hover:bg-[#c9ff3b]/[0.04]"
                   >
-                    <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#d8ff73]/10 text-[#d8ff73]">
+                    <span className="grid h-10 w-10 place-items-center rounded-2xl bg-[#c9ff3b]/10 text-[#c9ff3b]">
                       <Phone size={18} />
                     </span>
 
@@ -539,7 +539,7 @@ function Contact() {
                       <span className="block text-sm font-black text-white">
                         Phone
                       </span>
-                      <span className="block text-xs text-[#8d9a87] transition group-hover:text-[#d8ff73]">
+                      <span className="block text-xs text-[#8d9a87] transition group-hover:text-[#c9ff3b]">
                         {CONTACT_PHONE}
                       </span>
                     </span>
@@ -563,7 +563,7 @@ function Contact() {
                     >
                       <CheckCircle2
                         size={16}
-                        className="mt-0.5 shrink-0 text-[#d8ff73]"
+                        className="mt-0.5 shrink-0 text-[#c9ff3b]"
                       />
                       <p className="text-sm leading-6 text-[#c3cbbd]">
                         {item}
@@ -594,7 +594,7 @@ function Contact() {
               return (
                 <Reveal key={item.title} delay={index * 0.04}>
                   <motion.article
-                    className="relative min-h-[220px] overflow-hidden rounded-[1.55rem] border border-white/[0.085] bg-[#070907]/76 p-5 transition hover:border-[#d8ff73]/28 hover:bg-[#0b0f0b]/92"
+                    className="relative min-h-[220px] overflow-hidden rounded-[1.55rem] border border-white/[0.085] bg-[#070907]/76 p-5 transition hover:border-[#c9ff3b]/28 hover:bg-[#0b0f0b]/92"
                     whileHover={
                       reduceMotion
                         ? undefined
@@ -605,11 +605,11 @@ function Contact() {
                     }
                     transition={{ duration: 0.22, ease: "easeOut" }}
                   >
-                    <div className="absolute -right-16 -top-16 h-32 w-32 rounded-full bg-[#d8ff73]/[0.04]" />
+                    <div className="absolute -right-16 -top-16 h-32 w-32 rounded-full bg-[#c9ff3b]/[0.04]" />
 
                     <div className="relative">
                       <div className="mb-5 flex items-center justify-between">
-                        <div className="grid h-11 w-11 place-items-center rounded-2xl border border-[#d8ff73]/15 bg-[#d8ff73]/10 text-[#d8ff73]">
+                        <div className="grid h-11 w-11 place-items-center rounded-2xl border border-[#c9ff3b]/15 bg-[#c9ff3b]/10 text-[#c9ff3b]">
                           <Icon size={20} />
                         </div>
 
@@ -637,7 +637,7 @@ function Contact() {
       <section className="px-5 py-16 lg:px-8 lg:py-24">
         <div className="mx-auto grid max-w-6xl gap-5 lg:grid-cols-[0.72fr_1.28fr]">
           <Reveal>
-            <div className="rounded-[1.7rem] border border-[#d8ff73]/18 bg-[#0d130d]/68 p-6 md:p-8">
+            <div className="rounded-[1.7rem] border border-[#c9ff3b]/18 bg-[#0d130d]/68 p-6 md:p-8">
               <Label>After you contact</Label>
 
               <h2 className="text-balance text-[26px] font-black leading-tight tracking-[-0.035em] text-white md:text-[34px]">
@@ -685,10 +685,10 @@ function Contact() {
       </section>
 
       <section className="px-5 py-16 lg:px-8 lg:py-24">
-        <div className="mx-auto max-w-6xl rounded-[1.8rem] border border-[#d8ff73]/18 bg-[#0d130d]/68 p-6 md:p-8">
+        <div className="mx-auto max-w-6xl rounded-[1.8rem] border border-[#c9ff3b]/18 bg-[#0d130d]/68 p-6 md:p-8">
           <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
             <Reveal>
-              <div className="mb-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.24em] text-[#d8ff73]">
+              <div className="mb-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.24em] text-[#c9ff3b]">
                 <ShieldCheck size={14} />
                 Good brief format
               </div>
@@ -704,7 +704,7 @@ function Contact() {
                   <div className="flex items-center gap-3 rounded-2xl border border-white/[0.08] bg-[#070907]/54 px-4 py-3.5">
                     <CheckCircle2
                       size={17}
-                      className="shrink-0 text-[#d8ff73]"
+                      className="shrink-0 text-[#c9ff3b]"
                     />
                     <span className="text-sm font-semibold text-[#c3cbbd]">
                       {item}
@@ -721,7 +721,7 @@ function Contact() {
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col items-start justify-between gap-6 border-y border-white/[0.08] py-10 md:flex-row md:items-center">
             <div>
-              <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#d8ff73]">
+              <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#c9ff3b]">
                 Not ready to write everything?
               </p>
 
@@ -732,7 +732,7 @@ function Contact() {
 
             <Link
               to="/projects"
-              className="forge-ghost inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:text-[#d8ff73]"
+              className="forge-ghost inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:text-[#c9ff3b]"
             >
               View project records
               <ArrowRight size={17} />
