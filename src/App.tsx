@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Tools from "./pages/Tools";
 import ProjectDetails from "./pages/ProjectDetails";
+import Privacy from "./pages/Privacy";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/tools" element={<Tools />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy" element={<Privacy />} />
       </Route>
     </Routes>
   );
